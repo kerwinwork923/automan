@@ -1,0 +1,908 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  background-color: #fbf7f6;
+}
+
+.neonText {
+  font-size: 5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 13;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 50px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 2.5%;
+  z-index: 120;
+  position: absolute;
+  width: 100%;
+}
+.navbar .logoBox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.navbar .logoBox .logo {
+  height: 80px;
+  transform: translateY(-1%);
+}
+.navbar .logoBox .logoText h1 {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2.25rem;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+.navbar .logoBox .logoText h1 span {
+  color: #f17217;
+  letter-spacing: 0.2px;
+  text-shadow: 0 0 2px #f17217;
+  letter-spacing: 2.5px;
+  font-size: 2rem;
+  white-space: nowrap;
+}
+.navbar .menuBox {
+  display: flex;
+  gap: 7.5%;
+}
+.navbar .menuBox .menuBtn {
+  background-color: #ffffff;
+  white-space: nowrap;
+  background-color: #142A88;
+  color: #ffffff;
+  border-radius: 999px;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.25s all ease;
+  border: transparent 1px solid;
+}
+.navbar .menuBox .menuBtn:hover {
+  background-color: #fff;
+  border: #f17217 1px solid;
+  color: #f17217;
+}
+.navbar .menuBox .MenuTriger {
+  background-color: #fff;
+}
+
+.hamburBox {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.aboutUs {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fffaf6;
+}
+.aboutUs .consultBtn {
+  width: 20%;
+  font-size: 1.75rem;
+  background-color: #ff8d3b;
+  border: none;
+  padding: 0.25rem 0;
+  color: #fff;
+  border-radius: 8px;
+  margin-top: 2rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  transition: 0.3s ease all;
+}
+.aboutUs .ourVision {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aboutUs .ourVision .textGroup {
+  text-align: center;
+  color: #111111;
+}
+.aboutUs .ourVision .textGroup h3 {
+  font-size: 5rem;
+}
+.aboutUs .ourVision .textGroup h4 {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  line-height: 1.25;
+}
+.aboutUs .videoGroup {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100vh; /* 使影片佔滿視窗高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* 確保影片比例適當時，超出部分會被隱藏 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.aboutUs .videoGroup video {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Advantages {
+  margin-top: 1.5rem;
+}
+.Advantages img {
+  width: 150px;
+  margin: 0 auto;
+}
+.Advantages h3 {
+  text-align: center;
+  font-size: 2.75rem;
+  font-weight: bold;
+}
+.Advantages .advGroup {
+  gap: 5%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.Advantages .advGroup .advantage {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+.Advantages .advGroup .advantage .textGroup {
+  text-align: center;
+}
+.Advantages .advGroup .advantage .textGroup h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+.Advantages .advGroup .advantage .textGroup .PGroup {
+  margin-top: 0.5rem;
+}
+.Advantages .advGroup .advantage .textGroup .PGroup p {
+  margin-bottom: 0.35rem;
+}
+
+.service {
+  height: 40vh;
+  position: relative;
+}
+.service h3 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.service .stepScrollBar {
+  width: 90%;
+  height: 4px;
+  background-color: #eee;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+}
+.service .stepScrollBar .progress {
+  height: 4px;
+  width: 0;
+  background-color: #345;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: progressAnimation 15s linear infinite;
+}
+@keyframes progressAnimation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.service .stepGroup {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  position: absolute;
+  width: 80%;
+  left: 10%;
+}
+.service .stepGroup .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 999;
+}
+.service .stepGroup .step .sunny .number {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #222;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.service .stepGroup .step .sunny img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%) scale(0.5);
+  border: none;
+}
+.service .stepGroup .step .number {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.service .stepGroup .step:hover .stepImg {
+  transform: scale(1);
+}
+.service .stepGroup .step .stepImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  transition: all 0.3s ease;
+  transform: scale(0);
+}
+.service .stepGroup .step h4 {
+  text-align: center;
+  height: 24px;
+  margin-top: 1rem;
+}
+.service .stepGroup .step.active img {
+  border-color: #345;
+}
+.service .stepGroup .step.active h4 {
+  color: #345;
+}
+.service .stepGroup .stepActive1 .stepImg {
+  animation: scale 15s ease-in-out infinite;
+  animation-delay: 0s;
+}
+.service .stepGroup .stepActive2 .stepImg {
+  animation: scale2 15s ease-in-out infinite;
+}
+.service .stepGroup .stepActive3 .stepImg {
+  animation: scale3 15s ease-in-out infinite;
+}
+.service .stepGroup .stepActive4 .stepImg {
+  animation: scale4 15s ease-in-out infinite;
+}
+.service .stepGroup .stepActive5 .stepImg {
+  animation: scale5 15s ease-in-out infinite;
+}
+
+.formBox {
+  background-color: #999;
+  position: fixed;
+  top: 46%;
+  left: 50%;
+  width: 80%;
+  height: 750px;
+  border-radius: 16px;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 9939;
+  display: flex;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  transition: 0.5s ease all;
+  display: none;
+}
+.formBox .close {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 3.25rem;
+  cursor: pointer;
+}
+.formBox .support {
+  width: 40%;
+  background-color: #890;
+  position: relative;
+}
+.formBox .support iframe {
+  width: 100%;
+  height: 100%;
+}
+.formBox .support img {
+  width: 100%;
+  height: 100%;
+}
+.formBox .support .contactGroup {
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  padding: 0;
+  margin: 0;
+  transform: translate(-50%, 0);
+  background-color: rgba(25, 25, 25, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.formBox .support .contactGroup .contactEmail {
+  color: #fff;
+  font-size: 1.75rem;
+  white-space: nowrap;
+  text-align: center;
+  letter-spacing: 0.15px;
+  margin: 0;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.formBox .support .contactGroup .contactEmail img {
+  width: 22px;
+  transform: translateY(2px);
+}
+.formBox .main {
+  width: 60%;
+  padding: 16px 2.5% 24px;
+  background-color: #e7e6e6;
+}
+.formBox .main h3 {
+  font-size: 2.25rem;
+  color: #142A88;
+  text-align: center;
+  color: #000000;
+  font-weight: bold;
+  display: block;
+  letter-spacing: 2px;
+}
+.formBox .main .btnList {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0 0.5rem;
+}
+.formBox .main .btnList button {
+  cursor: pointer;
+  border: 1px solid #142A88;
+  background-color: #142A88;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.25rem 0.75rem;
+  transition: all 0.25s ease;
+}
+.formBox .main .btnList button:hover {
+  background-color: #fff;
+  color: #f17217;
+  border: 1px solid #f17217;
+}
+.formBox .main .btnList .btnActive {
+  background-color: #fff;
+  color: #f17217;
+  border: 1px solid #f17217;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.formBox .main .inputGroup {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+.formBox .main .inputGroup input[type=text],
+.formBox .main .inputGroup input[type=tel],
+.formBox .main .inputGroup input[type=email],
+.formBox .main .inputGroup select {
+  width: 77.5%;
+  font-size: 1.25rem;
+  outline: none;
+  background-image: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+}
+.formBox .main .inputGroup textarea {
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  border: none;
+  resize: none; /* 禁止调整大小 */
+}
+.formBox .main .inputGroup label {
+  width: 22.5%;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  font-weight: bold;
+}
+.formBox .main .inputGroup:nth-child(1) {
+  animation-delay: 0.025s;
+}
+.formBox .main .inputGroup:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.formBox .main .inputGroup:nth-child(3) {
+  animation-delay: 0.075s;
+}
+.formBox .main .inputGroup:nth-child(4) {
+  animation-delay: 0.1s;
+}
+.formBox .main .inputGroup:nth-child(5) {
+  animation-delay: 0.125s;
+}
+.formBox .main .inputGroup:nth-child(6) {
+  animation-delay: 0.15s;
+}
+.formBox .main .inputGroup:nth-child(7) {
+  animation-delay: 0.175s;
+}
+.formBox .main .inputGroup:nth-child(8) {
+  animation-delay: 0.2s;
+}
+.formBox .main .inputGroup:nth-child(9) {
+  animation-delay: 0.225s;
+}
+.formBox .main .inputGroup:nth-child(10) {
+  animation-delay: 0.25s;
+}
+.formBox .main .inputGroup:nth-child(11) {
+  animation-delay: 0.275s;
+}
+.formBox .main .inputGroup:nth-child(12) {
+  animation-delay: 0.3s;
+}
+.formBox .main .inputGroup:nth-child(13) {
+  animation-delay: 0.325s;
+}
+.formBox .main .inputGroup:nth-child(14) {
+  animation-delay: 0.35s;
+}
+.formBox .main .inputGroup:nth-child(15) {
+  animation-delay: 0.375s;
+}
+.formBox .main .inputGroup:nth-child(16) {
+  animation-delay: 0.4s;
+}
+.formBox .main .inputGroup:nth-child(17) {
+  animation-delay: 0.425s;
+}
+.formBox .main .inputGroup:nth-child(18) {
+  animation-delay: 0.45s;
+}
+.formBox .main .inputGroup:nth-child(19) {
+  animation-delay: 0.475s;
+}
+.formBox .main .inputGroup:nth-child(20) {
+  animation-delay: 0.5s;
+}
+.formBox .main .submitBtn {
+  width: 55%;
+  bottom: 3%;
+  margin-top: 0.5rem;
+  padding: 8px;
+  letter-spacing: 5px;
+  color: #fff;
+  background-color: #f17217;
+  font-size: 20px;
+  border-radius: 99px;
+  border: none;
+  position: absolute;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+  animation-delay: 0.4s;
+  cursor: pointer;
+}
+.formBox .main .form2 {
+  display: none;
+}
+.formBox .main .form3 {
+  display: none;
+}
+.formBox .main .radioWrap {
+  display: flex;
+  margin-left: auto;
+  width: 15.5%;
+}
+.formBox .main .radioWrap .radioGroup {
+  display: flex;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+}
+.formBox .main .radioWrap .radioGroup label {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.formBox .main .radioWrap .radioGroup input {
+  margin: 0;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #000;
+}
+
+.cover {
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(51, 51, 51, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  display: none;
+}
+
+.footer {
+  background-color: #e3732d;
+  position: relative;
+  padding: 2rem;
+  color: #fff;
+}
+.footer .footerContentGroup {
+  display: flex;
+  justify-content: space-between;
+}
+.footer .footerContentGroup .footerContent1 {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.footer .footerContentGroup .footerContent1 .logo {
+  height: 80px;
+  transform: translateY(-1%);
+}
+.footer .footerContentGroup .footerContent1 .logoText h1 {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2.25rem;
+  letter-spacing: 0.4px;
+}
+.footer .footerContentGroup .footerContent1 .logoText h1 span {
+  letter-spacing: 0.2px;
+  text-shadow: 0 0 2px #f17217;
+  letter-spacing: 2.5px;
+  font-size: 2rem;
+}
+.footer .footerContentGroup .footerContent2 {
+  width: 35%;
+}
+.footer .footerContentGroup .footerContent2 .contentItem {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+.footer .footerContentGroup .footerContent2 .contentItem .iconGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer .footerContentGroup .footerContent2 .contentItem .iconGroup img {
+  width: 24px;
+}
+.footer .footerContentGroup .footerContent2 .contentItem h4 {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+}
+.footer .footerContentGroup .footerContent3 {
+  width: 35%;
+  font-size: 2rem;
+  position: relative;
+}
+.footer .footerContentGroup .footerContent3::before {
+  transform: translateX(-30px);
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: #fff;
+  width: 2px;
+  content: "";
+}
+.footer .footerContentGroup .footerContent3 .footerBtnGroup {
+  display: flex;
+  justify-content: center;
+  gap: 2.5%;
+  margin-top: 1rem;
+}
+.footer .footerContentGroup .footerContent3 .footerBtnGroup .menuBtn {
+  background-color: #ffffff;
+  white-space: nowrap;
+  background-color: #142A88;
+  color: #ffffff;
+  border-radius: 999px;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.25s all ease;
+  border: transparent 1px solid;
+}
+.footer .footerContentGroup .footerContent3 .footerBtnGroup .menuBtn:hover {
+  background-color: #fff;
+  border: #f17217 1px solid;
+  color: #f17217;
+}
+.footer .footerContentGroup .footerContent3 .footerBtnGroup .MenuTriger {
+  background-color: #fff;
+}
+.footer .footerContentGroup .footerContent3 .fansGroup {
+  display: flex;
+  justify-content: end;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.75rem 6% 0;
+}
+.footer .footerContentGroup .footerContent3 .fansGroup img {
+  width: 2rem;
+}
+.footer .copyRight {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  * {
+    display: none;
+  }
+  .navbar {
+    padding: 16px 2%;
+  }
+  .navbar .logoBox .logo {
+    height: 70px;
+    transform: translateY(-1%);
+  }
+  .navbar .logoBox .logoText h1 {
+    font-size: 2rem;
+    letter-spacing: 0.4px;
+  }
+  .navbar .logoBox .logoText h1 span {
+    letter-spacing: 2.5px;
+    font-size: 1.75rem;
+  }
+  .navbar .menuBox {
+    gap: 5.5%;
+  }
+  .navbar .menuBox .menuBtn {
+    padding: 0.5rem 1rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .navbar {
+    padding: 16px 3%;
+  }
+  .navbar .logoBox .logo {
+    height: 70px;
+    transform: translateY(-1%);
+  }
+  .navbar .logoBox .logoText h1 {
+    font-size: 1.75rem;
+    letter-spacing: 0.4px;
+  }
+  .navbar .logoBox .logoText h1 span {
+    letter-spacing: 2.5px;
+    font-size: 1.5rem;
+  }
+  .navbar .menuBox {
+    gap: 5.5%;
+  }
+  .navbar .menuBox .menuBtn {
+    padding: 0.5rem 1rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .navbar {
+    padding: 16px 2%;
+  }
+  .navbar .logoBox .logo {
+    height: 48px;
+    transform: translateY(-1%);
+  }
+  .navbar .logoBox .logoText h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.4px;
+    line-height: 1.05;
+  }
+  .navbar .logoBox .logoText h1 span {
+    letter-spacing: 2.5px;
+    font-size: 1.25rem;
+  }
+  .navbar .menuBox {
+    gap: 5.5%;
+    display: none;
+  }
+  .navbar .menuBox .menuBtn {
+    padding: 0.5rem 1rem;
+  }
+}/*# sourceMappingURL=all.css.map */

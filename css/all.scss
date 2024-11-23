@@ -1,0 +1,982 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import "variable";
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+* {
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+
+body {
+    background-color: #fbf7f6;
+}
+
+.neonText {
+    font-size: 5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 13;
+    color: $color-light;
+    font-weight: bold;
+    letter-spacing: 50px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 2.5%;
+    z-index: 120;
+    position: absolute;
+    width: 100%;
+
+    .logoBox {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .logo {
+            height: 80px;
+            transform: translateY(-1%);
+        }
+        .logoText {
+            h1 {
+                display: flex;
+                flex-direction: column;
+                color: #fff;
+                font-weight: bold;
+                font-size: 2.25rem;
+                letter-spacing: 0.4px;
+                white-space: nowrap;
+                span {
+                    color: $color-primary;
+                    letter-spacing: 0.2px;
+                    text-shadow: 0 0 2px $color-primary;
+                    letter-spacing: 2.5px;
+                    font-size: 2rem;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    .menuBox {
+        display: flex;
+
+        gap: 7.5%;
+
+        .menuBtn {
+            background-color: $color-light;
+            white-space: nowrap;
+            background-color: $color-blue;
+            color: #ffffff;
+            border-radius: 999px;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: 0.25s all ease;
+            border: transparent 1px solid;
+
+            &:hover {
+                background-color: #fff;
+                border: $color-primary 1px solid;
+                color: $color-primary;
+            }
+        }
+        .MenuTriger {
+            background-color: #fff;
+        }
+    }
+}
+
+.hamburBox {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.aboutUs {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fffaf6;
+    .consultBtn {
+        width: 20%;
+        font-size: 1.75rem;
+        background-color: #ff8d3b;
+        border: none;
+        padding: 0.25rem 0;
+        color: #fff;
+        border-radius: 8px;
+        margin-top: 2rem;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba($color: #fff, $alpha: 0.1);
+        transition: 0.3s ease all;
+    }
+    .ourVision {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        margin: 0 auto;
+        // background-color: $color-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .textGroup {
+            text-align: center;
+            color: $color-dark;
+            h3 {
+                font-size: 5rem;
+            }
+            h4 {
+                margin-top: 1.5rem;
+                font-size: 2rem;
+                line-height: 1.25;
+            }
+        }
+    }
+    .videoGroup {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100vh; /* 使影片佔滿視窗高度 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* 確保影片比例適當時，超出部分會被隱藏 */
+        box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+    }
+
+    .videoGroup video {
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.service {
+    h3 {
+    }
+}
+
+.Advantages {
+    margin-top: 1.5rem;
+    img {
+        width: 150px;
+        margin: 0 auto;
+    }
+    h3 {
+        text-align: center;
+        font-size: 2.75rem;
+        font-weight: bold;
+    }
+    .advGroup {
+        gap: 5%;
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        .advantage {
+            display: flex;
+            flex-direction: column;
+
+            margin-top: 1rem;
+            margin-bottom: 4rem;
+            .textGroup {
+                text-align: center;
+
+                h3 {
+                    font-size: 1.75rem;
+                    font-weight: bold;
+                    margin-top: 0.5rem;
+                }
+                .PGroup {
+                    margin-top: 0.5rem;
+                    p {
+                        margin-bottom: 0.35rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.service {
+    height: 40vh;
+
+    h3 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+    position: relative;
+    // 進度條容器
+    .stepScrollBar {
+        width: 90%;
+        height: 4px;
+        background-color: #eee;
+        position: absolute;
+        top: 50%;
+        left: 5%;
+
+        // 進度條動畫
+        .progress {
+            height: 4px;
+            width: 0;
+            background-color: #345;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: progressAnimation 15s linear infinite; // 無限循環動畫
+        }
+    }
+    @keyframes progressAnimation {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+
+    .stepGroup {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+
+        position: absolute;
+        width: 80%;
+
+        left: 10%;
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 3;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 999;
+
+            .sunny {
+                .number {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    color: #222;
+                    font-weight: bold;
+                    font-size: 1rem;
+                }
+
+                img {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    width: 150px;
+                    height: 150px;
+                    transform: translate(-50%, -50%) scale(0.5);
+                    border: none;
+                }
+            }
+            .number {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            &:hover .stepImg {
+                transform: scale(1);
+            }
+            .stepImg {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                border: 2px solid #ccc;
+                transition: all 0.3s ease;
+                transform: scale(0);
+            }
+
+            h4 {
+                text-align: center;
+                height: 24px;
+                margin-top: 1rem;
+            }
+
+            // 當前步驟的樣式
+            &.active {
+                img {
+                    border-color: #345;
+                }
+
+                h4 {
+                    color: #345;
+                }
+            }
+        }
+        .stepActive1 {
+            .stepImg {
+                animation: scale 15s ease-in-out infinite;
+                animation-delay: 0s; // 第一步即時啟動
+            }
+        }
+        .stepActive2 {
+            .stepImg {
+                animation: scale2 15s ease-in-out infinite;
+            }
+        }
+        .stepActive3 {
+            .stepImg {
+                animation: scale3 15s ease-in-out infinite;
+            }
+        }
+        .stepActive4 {
+            .stepImg {
+                animation: scale4 15s ease-in-out infinite;
+            }
+        }
+        .stepActive5 {
+            .stepImg {
+                animation: scale5 15s ease-in-out infinite;
+            }
+        }
+        
+        // /* 針對每個步驟設置不同的 @keyframes */
+        // @keyframes scale {
+        //     0%, 20% { transform: scale(1); } // 第一步顯示
+        //     20%, 100% { transform: scale(0); } // 隱藏
+        // }
+        
+        // @keyframes scale2 {
+        //     0%, 20% { transform: scale(0); } // 延遲隱藏
+        //     20%, 30% { transform: scale(0); } // 保持隱藏
+        //     30%, 45% { transform: scale(1); } // 第二步顯示
+        //     45%, 100% { transform: scale(0); } // 隱藏
+        // }
+        
+        // @keyframes scale3 {
+        //     0%, 40% { transform: scale(0); } // 延遲隱藏
+        //     40%, 50% { transform: scale(0); } // 保持隱藏
+        //     50%, 65% { transform: scale(1); } // 第三步顯示
+        //     65%, 100% { transform: scale(0); } // 隱藏
+        // }
+        
+        // @keyframes scale4 {
+        //     0%, 60% { transform: scale(0); } // 延遲隱藏
+        //     60%, 70% { transform: scale(0); } // 保持隱藏
+        //     70%, 85% { transform: scale(1); } // 第四步顯示
+        //     85%, 100% { transform: scale(0); } // 隱藏
+        // }
+        
+        // @keyframes scale5 {
+        //     0%, 80% { transform: scale(0); } // 延遲隱藏
+        //     80%, 90% { transform: scale(0); } // 保持隱藏
+        //     90%, 100% { transform: scale(1); } // 第五步顯示
+        // }
+        
+    }
+}
+
+.formBox {
+    background-color: #999;
+    position: fixed;
+    top: 46%;
+    left: 50%;
+    width: 80%;
+    height: 750px;
+    border-radius: 16px;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 9939;
+    display: flex;
+    box-shadow: 0 0 30px rgba($color: #fff, $alpha: 0.15);
+    transition: 0.5s ease all;
+    display: none;
+
+    .close {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        width: 3.25rem;
+        cursor: pointer;
+    }
+    .support {
+        width: 40%;
+        background-color: #890;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        position: relative;
+        .contactGroup {
+            width: 100%;
+            position: absolute;
+            bottom: 0%;
+            left: 50%;
+            padding: 0;
+            margin: 0;
+            transform: translate(-50%, 0);
+            background-color: rgba($color: #191919, $alpha: 0.5);
+            backdrop-filter: blur(10px);
+            .contactEmail {
+                color: #fff;
+                font-size: 1.75rem;
+                white-space: nowrap;
+                text-align: center;
+                letter-spacing: 0.15px;
+                margin: 0;
+                padding: 0.75rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                img {
+                    width: 22px;
+                    transform: translateY(2px);
+                }
+            }
+        }
+    }
+
+    .main {
+        width: 60%;
+        padding: 16px 2.5% 24px;
+        background-color: #e7e6e6;
+
+        h3 {
+            font-size: 2.25rem;
+            color: $color-blue;
+            text-align: center;
+            color: #000000;
+            font-weight: bold;
+            display: block;
+            letter-spacing: 2px;
+        }
+
+        .btnList {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.5rem 0 0.5rem;
+
+            button {
+                cursor: pointer;
+                border: 1px solid $color-blue;
+                background-color: $color-blue;
+                color: #fff;
+                font-size: 1rem;
+
+                border-radius: 8px;
+                padding: 0.25rem 0.75rem;
+                transition: all 0.25s ease;
+                &:hover {
+                    background-color: #fff;
+                    color: $color-primary;
+                    border: 1px solid $color-primary;
+                }
+            }
+
+            .btnActive {
+                background-color: #fff;
+                color: $color-primary;
+                border: 1px solid $color-primary;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .inputGroup {
+            width: 100%;
+            position: relative;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            background-color: rgba(255, 255, 255, 1);
+            padding-top: 12px;
+            padding-bottom: 12px;
+            font-size: 1.25rem;
+            border-radius: 12px;
+            display: flex;
+            box-shadow: 0 0 10px rgba(#fff, 0.1);
+            opacity: 0; // 初始透明度
+
+            // 添加动画
+            animation: fadeIn 0.6s ease forwards; // 确保此行存在
+
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            select {
+                width: 77.5%;
+                font-size: 1.25rem;
+                outline: none;
+                background-image: none;
+                appearance: none;
+                border: none;
+            }
+
+            textarea {
+                width: 100%;
+                appearance: none;
+                outline: none;
+                border: none;
+                resize: none; /* 禁止调整大小 */
+            }
+
+            label {
+                width: 22.5%;
+                font-size: 1.25rem;
+                white-space: nowrap;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                padding-left: 1rem;
+                font-weight: bold;
+            }
+
+            // 使用 @for 循环添加延迟
+            @for $i from 1 through 20 {
+                &:nth-child(#{$i}) {
+                    animation-delay: 0.025s * $i; // 确保延迟正确设置
+                }
+            }
+        }
+
+        .submitBtn {
+            width: 55%;
+            bottom: 3%;
+            margin-top: 0.5rem;
+            padding: 8px;
+            letter-spacing: 5px;
+            color: #fff;
+            background-color: $color-primary;
+            font-size: 20px;
+            border-radius: 99px;
+            border: none;
+            position: absolute;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+            animation-delay: 0.4s;
+            cursor: pointer;
+        }
+        .form2 {
+            display: none;
+        }
+        .form3 {
+            display: none;
+        }
+
+        .radioWrap {
+            display: flex;
+            margin-left: auto;
+            width: 15.5%;
+            .radioGroup {
+                display: flex;
+                gap: 0.7rem;
+                margin: 0;
+                padding: 0;
+
+                label {
+                    margin: 0;
+                    padding: 0;
+                    position: relative;
+                }
+                input {
+                    margin: 0;
+                    padding: 0;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    background-color: #000;
+                }
+            }
+        }
+    }
+}
+
+.cover {
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba($color: #333, $alpha: 0.8);
+
+    backdrop-filter: blur(10px);
+    display: none;
+}
+
+.footer {
+    background-color: #e3732d;
+    position: relative;
+    padding: 2rem;
+    color: #fff;
+
+    .footerContentGroup {
+        display: flex;
+        justify-content: space-between;
+
+        .footerContent1 {
+            width: 30%;
+
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            .logo {
+                height: 80px;
+                transform: translateY(-1%);
+            }
+            .logoText {
+                h1 {
+                    display: flex;
+                    flex-direction: column;
+                    color: #fff;
+                    font-weight: bold;
+                    font-size: 2.25rem;
+                    letter-spacing: 0.4px;
+
+                    span {
+                        // color: $color-primary;
+                        letter-spacing: 0.2px;
+                        text-shadow: 0 0 2px $color-primary;
+                        letter-spacing: 2.5px;
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+        .footerContent2 {
+            width: 35%;
+
+            .contentItem {
+                display: flex;
+                align-items: center;
+
+                white-space: nowrap;
+                width: 100%;
+                padding: 0.5rem 0;
+                .iconGroup {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                        width: 24px;
+                    }
+                }
+                h4 {
+                    margin-left: 0.5rem;
+                    font-size: 1.25rem;
+                }
+            }
+        }
+        .footerContent3 {
+            width: 35%;
+            font-size: 2rem;
+            position: relative;
+
+            &::before {
+                transform: translateX(-30px);
+                height: 100%;
+                position: absolute;
+                left: 0;
+                background: #fff;
+                width: 2px;
+                content: "";
+            }
+            .footerBtnGroup {
+                display: flex;
+                justify-content: center;
+                gap: 2.5%;
+                margin-top: 1rem;
+                .menuBtn {
+                    background-color: $color-light;
+                    white-space: nowrap;
+                    background-color: $color-blue;
+                    color: #ffffff;
+                    border-radius: 999px;
+                    border: none;
+                    padding: 0.5rem 1rem;
+                    cursor: pointer;
+                    transition: 0.25s all ease;
+                    border: transparent 1px solid;
+
+                    &:hover {
+                        background-color: #fff;
+                        border: $color-primary 1px solid;
+                        color: $color-primary;
+                    }
+                }
+                .MenuTriger {
+                    background-color: #fff;
+                }
+            }
+            .fansGroup {
+                display: flex;
+                justify-content: end;
+                justify-content: center;
+                gap: 0.75rem;
+
+                margin: 0.75rem 6% 0;
+
+                img {
+                    width: 2rem;
+                }
+            }
+        }
+    }
+    .copyRight {
+        text-align: center;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    * {
+        display: none;
+    }
+    .navbar {
+        padding: 16px 2%;
+        .logoBox {
+            .logo {
+                height: 70px;
+                transform: translateY(-1%);
+            }
+            .logoText {
+                h1 {
+                    font-size: 2rem;
+                    letter-spacing: 0.4px;
+                    span {
+                        letter-spacing: 2.5px;
+                        font-size: 1.75rem;
+                    }
+                }
+            }
+        }
+        .menuBox {
+            gap: 5.5%;
+
+            .menuBtn {
+                padding: 0.5rem 1rem;
+
+                &:hover {
+                }
+            }
+            .MenuTriger {
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .navbar {
+        padding: 16px 3%;
+        .logoBox {
+            .logo {
+                height: 70px;
+                transform: translateY(-1%);
+            }
+            .logoText {
+                h1 {
+                    font-size: 1.75rem;
+                    letter-spacing: 0.4px;
+                    span {
+                        letter-spacing: 2.5px;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+        .menuBox {
+            gap: 5.5%;
+
+            .menuBtn {
+                padding: 0.5rem 1rem;
+
+                &:hover {
+                }
+            }
+            .MenuTriger {
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navbar {
+        padding: 16px 2%;
+        .logoBox {
+            .logo {
+                height: 48px;
+                transform: translateY(-1%);
+            }
+            .logoText {
+                h1 {
+                    font-size: 1.5rem;
+                    letter-spacing: 0.4px;
+                    line-height: 1.05;
+                    span {
+                        letter-spacing: 2.5px;
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+        }
+        .menuBox {
+            gap: 5.5%;
+            display: none;
+            .menuBtn {
+                padding: 0.5rem 1rem;
+
+                &:hover {
+                }
+            }
+            .MenuTriger {
+            }
+        }
+    }
+}

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMan Login</title>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div class="bgImg">
+        <img src="imgs/backLoginBG.png" alt="">
+    </div>
+    <div class="login">
+        <div class="login-header">
+            <h1 class="flame-text">奧特曼能源後台</h1>
+        </div>
+        <div class="login-form">
+            <h3>帳號:</h3>
+            <input type="text" id="username" placeholder="請輸入帳號" /><br>
+            <h3>密碼:</h3>
+            <input type="password" id="password" placeholder="請輸入密碼" />
+            <br>
+            <input type="button" value="登入" class="login-button" />
+
+        </div>
+    </div>
+
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Particles.js Configuration -->
+    <script>
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "autoMan7766" && password === "autoMan6677") {
+                // 驗證成功，記錄登入狀態和時間
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("loginTimestamp", Date.now()); // 儲存登入時間戳（毫秒）
+                window.location.href = "autoManBack.html";
+            } else {
+                alert("帳號或密碼錯誤，請重新輸入。");
+            }
+        }
+        const loginBtn = document.querySelector(".login-button");
+        loginBtn.addEventListener("click", function () {
+            login()
+        }, false)
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 10,
+                    "density": {
+                        "enable": true,
+                        "value_area": 2000
+                    }
+                },
+                "color": {
+                    "value": ["#ffae42", "#ff4500", "#ff0000", "#aa0000"]
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 1,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 0.5,
+                        "opacity_min": 0.6, // 降低最小不透明度以增加光暈層次
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 6,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 0.3, // 減少大小變化的速度
+                        "size_min": 3, // 增加最小大小
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "top",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 150,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 1
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+
+    </script>
+
+</html>
+
+<style>
+    body {
+
+        margin: 0px;
+        user-select: none;
+
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .bgImg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .bgImg img {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        letter-spacing: 10px;
+        color: #bc2806;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(30, 30, 30, .2);
+    }
+
+    .login {
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 500px;
+
+    }
+
+    .login-header {
+        color: #fff;
+        text-align: center;
+        font-size: 300%;
+    }
+
+    /* .login-header h1 {
+   text-shadow: 0px 5px 15px #000; */
+
+
+    .login-form {
+        background-color: rgba(237, 114, 27, 0.26);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        box-shadow: 0 0 20px 3px rgba(255, 0, 0, .2);
+
+    }
+
+    .login-form h3 {
+        text-align: left;
+        margin-left: 5%;
+        color: #fff;
+    }
+
+    .login-form {
+        box-sizing: border-box;
+        padding-top: 15px;
+        padding-bottom: 10%;
+        margin: 5% auto;
+        text-align: center;
+    }
+
+    .login-button {
+        padding: 24px;
+
+    }
+
+    .login input[type="text"],
+    .login input[type="password"] {
+
+        width: 90%;
+        line-height: 3em;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 1em 2em;
+        border-radius: 5px;
+        border: 2px solid #f2f2f2;
+        outline: none;
+        padding-left: 10px;
+    }
+
+    .login-form input[type="button"] {
+
+        background: #fff;
+        border: 1px solid #f2f2f2;
+        border-radius: 20px;
+        color: slategrey;
+        padding: .5rem 2rem;
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+        cursor: pointer;
+    }
+
+
+
+    /*Media Querie*/
+    @media screen and (max-width: 530px) {
+        h1 {
+            font-size: 2.25rem !important;
+        }
+
+        .login {
+
+            min-width: 400px;
+
+        }
+
+
+        /* .login-header h1 {
+   text-shadow: 0px 5px 15px #000; */
+
+
+        .login-form {
+            width: 80%;
+        }
+
+        .login-form h3 {
+            text-align: left;
+            margin-left: 1rem;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .login-form {
+            box-sizing: border-box;
+            padding-top: 15px;
+            padding-bottom: 10%;
+            margin: 5% auto;
+            text-align: center;
+        }
+
+
+
+        .login input[type="text"],
+        .login input[type="password"] {
+
+            width: 80%;
+            line-height: 2.5em;
+            font-family: 'Ubuntu', sans-serif;
+            margin: 1em 2em;
+            border-radius: 5px;
+            border: 2px solid #f2f2f2;
+            outline: none;
+            padding-left: 10px;
+        }
+
+        .login-form input[type="button"] {
+
+            background: #fff;
+            border: 1px solid #f2f2f2;
+            border-radius: 20px;
+            color: slategrey;
+            padding: .5rem 2rem;
+            font-size: 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+    }
+
+    #particles-js canvas {
+        filter: blur(4px) brightness(1.3);
+        /* 讓粒子稍微模糊並提高亮度 */
+    }
+
+    .particle-shadow {
+        box-shadow: 0 0 15px rgba(255, 69, 0, 0.7),
+            0 0 30px rgba(255, 174, 66, 0.5),
+            0 0 45px rgba(255, 0, 0, 0.3);
+    }
+
+    /* .flame-text {
+        font-size: 5rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, #ff4500, #ffae42, #ff0000, #800000);
+        background-size: 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+  
+        animation: flameEffect 5s ease-in-out infinite;
+
+        text-shadow:
+            0 0 10px rgba(255, 69, 0, 0.8),
+            0 0 20px rgba(255, 110, 0, 0.6),
+            0 0 30px rgba(255, 174, 66, 0.5),
+            0 0 40px rgba(255, 69, 0, 0.3);
+
+        animation: flameEffect 5s ease-in-out infinite;
+    }
+
+    @keyframes flameEffect {
+
+        0%,
+        100% {
+            background-position: 0% 0%;
+            text-shadow:
+                0 0 2px rgba(255, 69, 0, 0.8),
+                0 0 4px rgba(255, 110, 0, 0.6),
+                0 0 6px rgba(255, 174, 66, 0.5),
+                0 0 8px rgba(255, 69, 0, 0.3);
+        }
+
+        50% {
+            background-position: 100% 100%;
+            text-shadow:
+                0 0 2px rgba(255, 0, 0, 0.8),
+                0 0 4px rgba(255, 69, 0, 0.6),
+                0 0 6px rgba(255, 110, 0, 0.5),
+                0 0 8px rgba(255, 174, 66, 0.3);
+        }
+    } */
+</style>

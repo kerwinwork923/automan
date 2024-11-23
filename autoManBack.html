@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMan後台</title>
+    <style>
+        /* 基本樣式 */
+        body {
+            background-color: #0f1b36;
+        }
+
+        .autoManBackContainer {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 0;
+            margin-top: 1rem;
+            color: #fff;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .tab {
+            display: none;
+
+        }
+
+        .tab.active {
+            display: block;
+        }
+
+        .tabs {
+            display: flex;
+
+            justify-content: center;
+            gap: .5rem;
+            margin-top: 0.5rem;
+
+        }
+
+        .tab-button {
+            padding: 10px;
+            background-color: #142A88;
+            border: 1px solid #fff;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+            color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(255, 255, 255, .1);
+            cursor: pointer;
+        }
+
+        .tab-button.active {
+            background-color: #f17217;
+            font-weight: bold;
+        }
+
+        /* 資料顯示樣式 */
+        .data-container {
+
+            background-color: #f9f9f9;
+            margin-top: 1rem;
+        }
+
+        table {
+
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+
+            overflow: hidden;
+        }
+
+        .data-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+
+
+            /* 修改此行，允許自動換行 */
+            word-wrap: break-word;
+            /* 允許長單字換行 */
+            text-align: center;
+
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: .5px;
+            font-size: 1.15rem;
+            white-space: nowrap;
+        }
+
+        /* 分頁樣式 */
+        .pagination {
+            margin-top: 16px;
+            text-align: center;
+
+        }
+
+        .pagination span {
+            color: #fff;
+        }
+
+        .pagination .paginationBtn {
+            padding: 6px 12px;
+            margin: 0 5px;
+            cursor: pointer;
+            background-color: #fff;
+            font-weight: bold;
+            border-radius: 1rem;
+            color: #1b1b1b;
+            border: #fff solid 2px;
+        }
+
+        .item-buildingAddress {
+            width: 20%;
+        }
+
+
+        .excelBtn {
+            background-color: rgb(17, 80, 17);
+            color: #fff;
+            text-align: right;
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-left: auto;
+            border: 1px solid #191919;
+            cursor: pointer;
+        }
+
+        .btnGroup {
+            width: 100%;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>後台表單</h1>
+
+    <div class="tabs">
+        <div class="tab-button active" data-tab="form1" onclick="switchTab(event)">屋頂出租</div>
+        <div class="tab-button" data-tab="form2" onclick="switchTab(event)">自費建置</div>
+        <div class="tab-button" data-tab="form3" onclick="switchTab(event)">購買電廠</div>
+    </div>
+
+    <div class="autoManBackContainer">
+        <div id="form1" class="tab active">
+            <div class="btnGroup">
+                <button id="downloadExcelBtn1" class="excelBtn" onclick="downloadExcel('form1')">Excel下載</button>
+            </div>
+
+            <div id="form1Data" class="data-container"></div>
+            <div class="pagination">
+                <button class="paginationBtn" onclick="previousPage('form1')">上一頁</button>
+                <span id="form1Page"></span>
+                <button class="paginationBtn" onclick="nextPage('form1')">下一頁</button>
+
+            </div>
+
+        </div>
+
+        <div id="form2" class="tab">
+            <div class="btnGroup">
+                <button id="downloadExcelBtn1" class="excelBtn" onclick="downloadExcel('form2')">Excel下載</button>
+            </div>
+            <div id="form2Data" class="data-container"></div>
+            <div class="pagination">
+                <button class="paginationBtn" onclick="previousPage('form2')">上一頁</button>
+                <span id="form2Page"></span>
+                <button class="paginationBtn" onclick="nextPage('form2')">下一頁</button>
+            </div>
+
+        </div>
+
+        <div id="form3" class="tab">
+            <div class="btnGroup">
+                <button id="downloadExcelBtn1" class="excelBtn" onclick="downloadExcel('form3')">Excel下載</button>
+            </div>
+            <div id="form3Data" class="data-container"></div>
+            <div class="pagination">
+                <button class="paginationBtn" onclick="previousPage('form3')">上一頁</button>
+                <span id="form3Page"></span>
+                <button class="paginationBtn" onclick="nextPage('form3')">下一頁</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const sessionDuration = 1800 * 1000; 
+
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            const loginTimestamp = localStorage.getItem("loginTimestamp");
+
+            // 檢查登入狀態和時間戳
+            if (isLoggedIn !== "true" || !loginTimestamp) {
+                redirectToLogin();
+            } else {
+                const currentTime = Date.now();
+                const elapsedTime = currentTime - loginTimestamp;
+
+                // 檢查是否超過有效時間
+                if (elapsedTime > sessionDuration) {
+                    alert("登入已超時，請重新登入。");
+                    logout(); // 登出並跳轉回登入頁面
+                }
+            }
+        }
+
+        function redirectToLogin() {
+            window.location.href = "autoManBackLogin.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("loginTimestamp");
+            redirectToLogin();
+        }
+
+        // 當頁面載入時檢查登入狀態
+        checkLoginStatus();
+
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "API_KEY",
+            authDomain: "automan-773b8.firebaseapp.com",
+            databaseURL: "https://automan-773b8-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "automan-773b8",
+            storageBucket: "automan-773b8.appspot.com",
+            messagingSenderId: "355844871507",
+            appId: "1:355844871507:web:37d3e321405300c0d1fda6",
+            measurementId: "G-NY7354HT8D"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        const itemsPerPage = 20;
+        let currentPage = { form1: 1, form2: 1, form3: 1 };
+        let formData = { form1: [], form2: [], form3: [] };
+
+        function loadFormData() {
+            const dbRef = ref(db, '/');
+            onValue(dbRef, (snapshot) => {
+                const data = snapshot.val();
+                formData.form1 = data['屋頂出租'] ? Object.values(data['屋頂出租']) : [];
+                formData.form2 = data['自費建置'] ? Object.values(data['自費建置']) : [];
+                formData.form3 = data['購買電廠'] ? Object.values(data['購買電廠']) : [];
+                updateTable('form1');
+                updateTable('form2');
+                updateTable('form3');
+            });
+        }
+
+        function updateTable(formId) {
+            const data = formData[formId];
+            const container = document.getElementById(`${formId}Data`);
+            const pageContainer = document.getElementById(`${formId}Page`);
+            const startIndex = (currentPage[formId] - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            const tableData = data.slice(startIndex, endIndex);
+            container.innerHTML = createTable(tableData, formId);
+            pageContainer.textContent = `第 ${currentPage[formId]} 頁 / 共 ${Math.ceil(data.length / itemsPerPage)} 頁`;
+        }
+
+        function createTable(data, formId) {
+            if (data.length === 0) return '<p>沒有資料可顯示。</p>';
+
+            let table = '<table><thead><tr>';
+            const headers = {
+                name: "姓名",
+                tel: "電話",
+                buildingAddress: "完整建築地址",
+                legalBuildingAddress: "合法建物類型",
+                email: "電子郵件",
+                houseAge: "屋齡",
+                NOB: "屋頂坪數",
+                NORSM: "總樓數",
+                remark: "備註",
+                company: "公司名稱",
+                investPower: "有投資電廠經驗?",
+                timestamp: "時間"
+            };
+
+            let columnOrder;
+            let columnClasses;
+            if (formId === 'form1' || formId === 'form2') {
+                columnOrder = [
+                    "name", "tel", "buildingAddress",
+                    "legalBuildingAddress", "email", "houseAge",
+                    "NOB", "NORSM", "remark", "timestamp"
+                ];
+                columnClasses = ["narrow", "narrow", "wide", "medium", "medium", "narrow", "narrow", "narrow", "narrow", "narrow"];
+            } else if (formId === 'form3') {
+                columnOrder = [
+                    "name", "tel", "company",
+                    "investPower", "email", "remark", "timestamp"
+                ];
+                columnClasses = ["narrow", "narrow", "medium", "medium", "medium", "narrow", "narrow"];
+            }
+
+            // 表頭
+            columnOrder.forEach((key, index) => {
+                // 為每個表頭單元格添加對應的類名
+                table += `<th class="${columnClasses[index]} item-${key}">${headers[key]}</th>`;
+            });
+            table += '</tr></thead><tbody>';
+
+            // 表身
+            data.forEach(item => {
+                table += '<tr>';
+                columnOrder.forEach((key, index) => {
+                    const cellValue = key === "timestamp" ? new Date(item[key]).toLocaleString() : item[key];
+                    // 為每個 td 元素添加對應的類名
+                    table += `<td class="${columnClasses[index]} item-${key}">${cellValue || ''}</td>`;
+                });
+                table += '</tr>';
+            });
+            table += '</tbody></table>';
+            return table;
+        }
+
+
+        window.previousPage = function (formId) {
+            if (currentPage[formId] > 1) {
+                currentPage[formId]--;
+                updateTable(formId);
+            }
+        }
+
+        window.nextPage = function (formId) {
+            if (currentPage[formId] < Math.ceil(formData[formId].length / itemsPerPage)) {
+                currentPage[formId]++;
+                updateTable(formId);
+            }
+        }
+
+
+
+        // 将 switchTab 函数设为全局函数
+        window.switchTab = function (event) {
+            const selectedTab = event.target.dataset.tab;
+
+            // 隱藏所有標籤內容
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 移除所有按鈕的 active 樣式
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // 顯示選中的標籤內容
+            document.getElementById(selectedTab).classList.add('active');
+            event.target.classList.add('active');
+        };
+
+        window.downloadExcel = function (formId) {
+            const data = formData[formId];
+            const headers = {
+                name: "姓名",
+                tel: "電話",
+                buildingAddress: "完整建築地址",
+                legalBuildingAddress: "合法建物類型",
+                email: "電子郵件",
+                houseAge: "屋齡",
+                NOB: "屋頂坪數",
+                NORSM: "總樓數",
+                remark: "備註",
+                company: "公司名稱",
+                investPower: "有投資電廠經驗?",
+                timestamp: "時間"
+            };
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += Object.values(headers).join(",") + "\n"; // 添加表头
+
+            data.forEach(item => {
+                const row = Object.keys(headers).map(key => item[key] || '').join(",");
+                csvContent += row + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `${formId}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        loadFormData();
+    </script>
+</body>
+
+</html>
