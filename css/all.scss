@@ -151,6 +151,12 @@ body {
     letter-spacing: 50px;
 }
 
+img {
+    user-drag: none; 
+    -webkit-user-drag: none; 
+    pointer-events: none; 
+}
+
 .navbar {
     display: flex;
     align-items: center;
