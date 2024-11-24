@@ -20,6 +20,13 @@
             陽光花園
         </div>
     </div> -->
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner-container">
+            <div class="sun"></div>
+        </div>
+        <div class="loading-text">AUTOMAN</div>
+    </div>
     <div class="hamburBox">
 
     </div>
@@ -502,6 +509,7 @@
 </body>
 
 </html>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -1008,3 +1016,46 @@
         }
     }
 </style>
+
+
+
+
+
+<script>
+   window.onload = function() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    
+    // Fetch all the images in the page
+    const images = document.getElementsByTagName('img');
+    let loadedImagesCount = 0;
+    const totalImages = images.length;
+
+    // Function to handle image loading completion
+    const checkImagesLoaded = () => {
+        loadedImagesCount++;
+        if (loadedImagesCount === totalImages) {
+            // Once all images are loaded, add 'hidden' class to fade out the loading screen
+            loadingScreen.classList.add('hidden');
+        }
+    };
+
+    // If there are no images, immediately hide the loading screen
+    if (totalImages === 0) {
+        checkImagesLoaded();
+    }
+
+    // Attach load event to each image
+    for (let i = 0; i < totalImages; i++) {
+        if (images[i].complete) {
+            // If the image is already loaded (cached), call the check function immediately
+            checkImagesLoaded();
+        } else {
+            // Otherwise, attach the load event to the image
+            images[i].onload = checkImagesLoaded;
+            images[i].onerror = checkImagesLoaded; // In case an image fails to load, still count
+        }
+    }
+};
+
+    </script>
+    
