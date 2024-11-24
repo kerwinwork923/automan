@@ -141,7 +141,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Bebas Neue', sans-serif;
+    // font-family: 'Bebas Neue', sans-serif;
 }
 
 /* Loading screen styles */
@@ -157,17 +157,16 @@ body, html {
     height: 100%;
     background-color: rgba(22, 22, 22, 1);
     z-index: 9999;
-    opacity: 1; /* Set to 1 initially */
-    transition: opacity 1s ease-out; /* Smooth opacity transition */
+    opacity: 1; 
+    transition: opacity 1s ease-out; 
 }
 
-/* Hidden class to hide the loading screen */
 .loading-screen.hidden {
     opacity: 0;
-    pointer-events: none; /* Prevent interaction when hidden */
+    pointer-events: none;
 }
 
-/* Spinner container styles */
+
 .spinner-container {
     display: flex;
     justify-content: center;
@@ -175,7 +174,7 @@ body, html {
     margin-bottom: 20px;
 }
 
-/* Sun styling */
+
 .sun {
     width: 80px;
     height: 80px;
@@ -185,7 +184,7 @@ body, html {
     box-shadow: 0 0 20px rgba($color: #ff7a00, $alpha: 1.0);
 }
 
-/* Keyframes for sun rotation */
+
 @keyframes rotateSun {
     0% {
         transform: rotate(0deg);
@@ -225,6 +224,7 @@ img {
     user-drag: none; 
     -webkit-user-drag: none; 
     pointer-events: none; 
+    user-select: none;
 }
 
 .navbar {
@@ -468,8 +468,9 @@ img {
             transition: all 0.3s ease;
             position: relative;
             z-index: 999;
-
+         
             .sunny {
+            
                 .number {
                     position: absolute;
                     left: 50%;
@@ -479,6 +480,7 @@ img {
                     font-weight: bold;
                     font-size: 1rem;
                 }
+              
 
                 img {
                     position: absolute;
@@ -496,15 +498,18 @@ img {
             }
 
             &:hover .stepImg {
-                transform: scale(1);
+                transform:  scale(1);
             }
             .stepImg {
                 width: 150px;
                 height: 150px;
                 border-radius: 50%;
-                border: 2px solid #ccc;
+                // border: 2px solid #ccc;
                 transition: all 0.3s ease;
-                transform: scale(0);
+                transform:   scale(0);
+                background-color: #fff;
+                margin-top: 2rem;
+                box-shadow: 0 0 10px #e3732d;
             }
 
             h4 {
