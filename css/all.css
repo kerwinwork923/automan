@@ -398,14 +398,14 @@ img {
 }
 
 .service {
-  height: 40vh;
+  height: 400px;
   position: relative;
 }
 .service h3 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .service .stepScrollBar {
   width: 90%;
