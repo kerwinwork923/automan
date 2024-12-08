@@ -400,12 +400,13 @@ img {
 .service {
   height: 400px;
   position: relative;
+  text-align: center;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 .service h3 {
-  text-align: center;
   font-size: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
+  margin: 1rem 0 2rem;
 }
 .service .stepScrollBar {
   width: 90%;
@@ -422,20 +423,11 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  animation: progressAnimation 15s linear infinite;
-}
-@keyframes progressAnimation {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
+  transition: width 0.3s ease-in-out;
 }
 .service .stepGroup {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
   position: absolute;
   width: 80%;
   left: 10%;
@@ -444,73 +436,23 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 3;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 999;
-}
-.service .stepGroup .step .sunny .number {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: #222;
-  font-weight: bold;
-  font-size: 1rem;
-}
-.service .stepGroup .step .sunny img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 150px;
-  height: 150px;
-  transform: translate(-50%, -50%) scale(0.5);
-  border: none;
-}
-.service .stepGroup .step .number {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-.service .stepGroup .step:hover .stepImg {
-  transform: scale(1);
 }
 .service .stepGroup .step .stepImg {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  transition: all 0.3s ease;
-  transform: scale(0);
   background-color: #fff;
-  margin-top: 2rem;
   box-shadow: 0 0 10px #e3732d;
+  margin-top: 2rem;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: scale(0.5);
 }
 .service .stepGroup .step h4 {
-  text-align: center;
-  height: 24px;
+  color: #222;
+  opacity: 1;
   margin-top: 1rem;
-}
-.service .stepGroup .step.active img {
-  border-color: #345;
-}
-.service .stepGroup .step.active h4 {
-  color: #345;
-}
-.service .stepGroup .stepActive1 .stepImg {
-  animation: scale 15s ease-in-out infinite;
-  animation-delay: 0s;
-}
-.service .stepGroup .stepActive2 .stepImg {
-  animation: scale2 15s ease-in-out infinite;
-}
-.service .stepGroup .stepActive3 .stepImg {
-  animation: scale3 15s ease-in-out infinite;
-}
-.service .stepGroup .stepActive4 .stepImg {
-  animation: scale4 15s ease-in-out infinite;
-}
-.service .stepGroup .stepActive5 .stepImg {
-  animation: scale5 15s ease-in-out infinite;
+  text-align: center;
 }
 
 .formBox {

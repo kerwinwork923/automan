@@ -380,64 +380,45 @@
 
     <div class="service">
         <h3>一站式整合服務流程</h3>
-
         <div class="stepGroup">
             <div class="stepScrollBar">
                 <div class="progress"></div>
             </div>
-            <div class="step stepActive1">
-                <div class="sunny">
-                    <img src="./imgs/sunny.png" alt="">
-                    <div class="number">1</div>
-                </div>
+            <div class="step" data-step="1">
 
                 <img src="./imgs/service1.jpg" class="stepImg" alt="">
                 <h4>Business<br>Development</h4>
                 <h4>案件開發</h4>
             </div>
-            <div class="step stepActive2">
-                <div class="sunny">
-                    <img src="./imgs/sunny.png" alt="">
-                    <div class="number">2</div>
-                </div>
+            <div class="step" data-step="2">
 
                 <img src="./imgs/service2.png" class="stepImg" alt="">
                 <h4>DESIGN & PLAN<br></h4>
                 <h4>設計規劃</h4>
             </div>
-            <div class="step stepActive3">
-                <div class="sunny">
-                    <img src="./imgs/sunny.png" alt="">
-                    <div class="number">3</div>
-                </div>
-
+            <div class="step" data-step="3">
+               
                 <img src="./imgs/service3.jpg" class="stepImg" alt="">
                 <h4>Apply Permit</h4>
                 <h4>申請許可</h4>
             </div>
-            <div class="step stepActive4">
-                <div class="sunny">
-                    <img src="./imgs/sunny.png" alt="">
-                    <div class="number">4</div>
-                </div>
-
+            <div class="step" data-step="4">
+             
                 <img src="./imgs/service4.jpg" class="stepImg" alt="">
                 <h4>EPC Service</h4>
                 <h4>施工監造</h4>
             </div>
-            <div class="step stepActive5">
-                <div class="sunny">
-                    <img src="./imgs/sunny.png" alt="">
-                    <div class="number">5</div>
-                </div>
-
+            <div class="step" data-step="5">
+          
                 <img src="./imgs/service5.jpg" class="stepImg" alt="">
                 <h4>Operation<br>Maintain</h4>
                 <h4>系統維運</h4>
             </div>
-
         </div>
     </div>
+    
+    
+    
 
     <div class="footer">
         <div class="footerContentGroup">
@@ -779,6 +760,72 @@
     });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const steps = document.querySelectorAll(".step");
+    const progressBar = document.querySelector(".progress");
+    const totalSteps = steps.length;
+
+    const cycleTime = 30000; // 总动画时间 (15 秒)
+    const stepTime = cycleTime / totalSteps; // 每步的时间
+    let currentStep = 0;
+
+    function updateSteps(stepIndex) {
+        steps.forEach((step, index) => {
+            const img = step.querySelector(".stepImg");
+            if (index === stepIndex) {
+                img.style.opacity = "1"; // 当前步骤图片显示
+                img.style.transform = "scale(1)"; // 当前步骤图片放大
+                img.style.transition = "transform 1s ease, opacity 1s ease"; // 添加过渡动画
+            } else {
+                img.style.opacity = "0"; // 其他步骤图片隐藏
+                img.style.transform = "scale(0.5)"; // 其他步骤图片缩小
+                img.style.transition = "transform 1s ease, opacity 0.5s ease"; // 添加过渡动画
+            }
+        });
+    }
+
+    function startProgressCycle() {
+        let startTime = Date.now();
+
+        // 设置进度条的初始动画
+        progressBar.style.transition = `width ${cycleTime / 1200}s linear`;
+        progressBar.style.width = "100%";
+
+        function progressLoop() {
+            const elapsedTime = Date.now() - startTime;
+            const progressPercentage = Math.min((elapsedTime / cycleTime) * 100, 100);
+
+            // 更新当前步骤
+            const stepIndex = Math.floor((elapsedTime / stepTime) % totalSteps);
+            if (stepIndex !== currentStep) {
+                currentStep = stepIndex;
+                updateSteps(currentStep); // 平滑切换图片
+            }
+
+            // 检查是否需要重置进度条
+            if (elapsedTime >= cycleTime) {
+                progressBar.style.transition = "none"; // 暂停动画
+                progressBar.style.width = "0%"; // 重置进度条
+                setTimeout(() => {
+                    progressBar.style.transition = `width ${cycleTime / 1200}s linear`;
+                    progressBar.style.width = "100%";
+                    startTime = Date.now(); // 重置开始时间
+                }, 50); // 小延迟确保重置
+            }
+
+            requestAnimationFrame(progressLoop);
+        }
+
+        progressLoop(); // 启动循环
+    }
+
+    // 初始化并启动循环
+    updateSteps(0);
+    startProgressCycle();
+});
+
+</script>
 
 
 <style lang="scss">
