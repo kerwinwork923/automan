@@ -25,8 +25,15 @@
         <div class="spinner-container">
             <div class="sun"></div>
         </div>
-        <div class="loading-text">AUTOMAN</div>
+        <div class="loading-text">
+            AUTOMAN
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">0%</div>
     </div>
+
     <div class="hamburBox">
 
     </div>
@@ -258,10 +265,17 @@
             <img class="logo" src="/imgs/logo.png" alt="">
             <div class="logoText">
                 <h1>奧特曼能源有限公司
-                    <span>
-                        AutoMan
-                    </span>
+
                 </h1>
+                <h2>
+                    <div class="logoLightText">A</div>
+                    <div class="logoLightText">u</div>
+                    <div class="logoLightText">t</div>
+                    <div class="logoLightText">o</div>
+                    <div class="logoLightText">M</div>
+                    <div class="logoLightText">a</div>
+                    <div class="logoLightText">n</div>
+                </h2>
             </div>
         </div>
         <div class="menuBox">
@@ -271,16 +285,7 @@
         </div>
     </div>
 
-    <!-- 2. 「陽光變黃金，投資創新機。」
- 3. 「迎向陽光，掌握財富未來。」
- 4. 「清潔能源，點亮明天。」
- 5. 「智慧選擇，能源永續。」
- 6. 「從陽光中汲取，從地球中回饋。」
- 7. 「擁抱太陽，實現雙贏。」
- 8. 「光電收益穩，投資環保雙贏。」
- 9. 「善用陽光，成就綠色未來。」
- 10. 「能源新革命，讓陽光為你工作。」
-  -->
+
     <div class="swiper indexSwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide zoom-slide">
@@ -329,33 +334,7 @@
                 <img src="/imgs/indexBanner/c.jpg" />
             </div>
 
-            <div class="swiper-slide zoom-slide">
-                <div class="lightText">
-                    <div class="text">清</div>
-                    <div class="text">潔</div>
-                    <div class="text">能</div>
-                    <div class="text">源</div>
-                    <div class="text">點</div>
-                    <div class="text">亮</div>
-                    <div class="text">明</div>
-                    <div class="text">天</div>
-                </div>
-                <img src="/imgs/indexBanner/e.jpg" />
-            </div>
 
-            <div class="swiper-slide zoom-slide">
-                <div class="lightText">
-                    <div class="text">智</div>
-                    <div class="text">慧</div>
-                    <div class="text">選</div>
-                    <div class="text">擇</div>
-                    <div class="text">能</div>
-                    <div class="text">源</div>
-                    <div class="text">永</div>
-                    <div class="text">遠</div>
-                </div>
-                <img src="/imgs/indexBanner/f.jpg" />
-            </div>
             <div class="swiper-slide zoom-slide">
                 <div class="lightText">
                     <div class="text">從</div>
@@ -1144,7 +1123,7 @@
         animation: zoomIn 15s forwards ease-out;
         animation-delay: .5s;
         /* 確保動畫生效 */
-      
+
         /* 可選效果 */
     }
 
@@ -1274,7 +1253,7 @@
 
         text-shadow: 0 0 10px rgba(255, 255, 255, .5);
         animation-fill-mode: both;
-     
+
         /* 確保動畫結束後保留效果 */
         /* animation-delay: var(--delay, 0s); */
         /* 使用 JS 動態添加延遲 */
@@ -1311,18 +1290,28 @@
 
     window.onload = function () {
         const loadingScreen = document.getElementById('loadingScreen');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
 
         // Fetch all the images in the page
         const images = document.getElementsByTagName('img');
         let loadedImagesCount = 0;
         const totalImages = images.length;
 
+        const updateProgress = () => {
+            const progress = Math.round((loadedImagesCount / totalImages) * 100);
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${progress}%`;
+        };
+
         // Function to handle image loading completion
         const checkImagesLoaded = () => {
             loadedImagesCount++;
+            updateProgress();
             if (loadedImagesCount === totalImages) {
-                // Once all images are loaded, add 'hidden' class to fade out the loading screen
-                loadingScreen.classList.add('hidden');
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                }, 500); // Fade out loading screen after a short delay
             }
         };
 
@@ -1334,15 +1323,14 @@
         // Attach load event to each image
         for (let i = 0; i < totalImages; i++) {
             if (images[i].complete) {
-                // If the image is already loaded (cached), call the check function immediately
                 checkImagesLoaded();
             } else {
-                // Otherwise, attach the load event to the image
                 images[i].onload = checkImagesLoaded;
-                images[i].onerror = checkImagesLoaded; // In case an image fails to load, still count
+                images[i].onerror = checkImagesLoaded; // In case an image fails to load, still count it
             }
         }
     };
+
 
 
 

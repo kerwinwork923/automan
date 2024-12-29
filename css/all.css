@@ -178,6 +178,30 @@ body, html {
   margin-bottom: 20px;
 }
 
+.progress-bar-container {
+  width: 80%;
+  height: 10px;
+  background-color: #333;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #ff7a00;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
 .sun {
   width: 80px;
   height: 80px;
@@ -255,13 +279,15 @@ img {
   letter-spacing: 0.4px;
   white-space: nowrap;
 }
-.navbar .logoBox .logoText h1 span {
+.navbar .logoBox .logoText h2 {
   color: #f17217;
   letter-spacing: 0.2px;
   text-shadow: 0 0 2px #f17217;
   letter-spacing: 2.5px;
   font-size: 2rem;
   white-space: nowrap;
+  display: flex;
+  font-weight: bold;
 }
 .navbar .menuBox {
   display: flex;
