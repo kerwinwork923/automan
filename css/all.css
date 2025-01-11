@@ -143,10 +143,35 @@ img {
 }
 
 /* Reset and basic styling */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+.music-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.music-controls img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  pointer-events: auto;
+}
+
+.music-controls img:hover {
+  transform: scale(1.1);
 }
 
 /* Loading screen styles */
@@ -228,7 +253,7 @@ body, html {
 }
 
 body {
-  background-color: #fbf7f6;
+  background: #111;
 }
 
 .neonText {
@@ -280,14 +305,68 @@ img {
   white-space: nowrap;
 }
 .navbar .logoBox .logoText h2 {
-  color: #f17217;
-  letter-spacing: 0.2px;
-  text-shadow: 0 0 2px #f17217;
-  letter-spacing: 2.5px;
-  font-size: 2rem;
-  white-space: nowrap;
   display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@keyframes waveLightEffect {
+  0% {
+    background-position: 200% 0;
+  }
+  90% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 0% 0; /* 停止在最後的狀態 */
+  }
+}
+.navbar .logoBox .logoText h2 .logoLightText {
+  font-size: 2.25rem;
   font-weight: bold;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 2px;
+  color: transparent;
+  background: linear-gradient(270deg, #ffffff 0%, #dad0ca 50%, #ff4500 100%);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: waveLightEffect 2s linear infinite; /* 動畫總時長設定 */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation-duration: 3.5s; /* 2秒動畫 + 3秒停頓 */
+  animation-timing-function: linear; /* 線性運動 */
+  animation-iteration-count: infinite; /* 循環播放 */
+}
+.navbar .logoBox .logoText h2 .logoLightText:nth-child(1) {
+  animation-delay: 0s;
+}
+.navbar .logoBox .logoText h2 .logoLightText:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.navbar .logoBox .logoText h2 .logoLightText:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.navbar .logoBox .logoText h2 .logoLightText:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.navbar .logoBox .logoText h2 .logoLightText:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.navbar .logoBox .logoText h2 .logoLightText:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.navbar .logoBox .logoText h2 .logoLightText:nth-child(7) {
+  animation-delay: 0.6s;
+}
+@keyframes waveLightEffect {
+  0% {
+    background-position: 200% 0;
+  }
+  90% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 0% 0; /* 停止在最後的狀態 */
+  }
 }
 .navbar .menuBox {
   display: flex;
@@ -304,6 +383,8 @@ img {
   cursor: pointer;
   transition: 0.25s all ease;
   border: transparent 1px solid;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
 }
 .navbar .menuBox .menuBtn:hover {
   background-color: #fff;
@@ -326,20 +407,20 @@ img {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: #fffaf6;
+  background-color: #222;
 }
 .aboutUs .consultBtn {
-  width: 20%;
+  padding: 0.5rem 0;
   font-size: 1.75rem;
-  background-color: #ff8d3b;
-  border: none;
-  padding: 0.25rem 0;
   color: #fff;
-  border-radius: 8px;
   margin-top: 2rem;
+  background: linear-gradient(45deg, #ff8d20, #ff3d00);
+  border: none;
+  border-radius: 50px;
+  width: 20%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  transition: 0.3s ease all;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .aboutUs .ourVision {
   display: flex;
@@ -352,10 +433,12 @@ img {
 }
 .aboutUs .ourVision .textGroup {
   text-align: center;
-  color: #111111;
+  color: #fff;
 }
 .aboutUs .ourVision .textGroup h3 {
   font-size: 5rem;
+  letter-spacing: 10px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 .aboutUs .ourVision .textGroup h4 {
   margin-top: 1.5rem;
@@ -386,6 +469,7 @@ img {
 
 .Advantages {
   margin-top: 1.5rem;
+  color: #fff;
 }
 .Advantages img {
   width: 150px;
@@ -395,6 +479,9 @@ img {
   text-align: center;
   font-size: 2.75rem;
   font-weight: bold;
+  color: #ff7a00;
+  letter-spacing: 10px;
+  text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
 }
 .Advantages .advGroup {
   gap: 5%;
@@ -414,13 +501,17 @@ img {
 .Advantages .advGroup .advantage .textGroup h3 {
   font-size: 1.75rem;
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
 }
 .Advantages .advGroup .advantage .textGroup .PGroup {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 .Advantages .advGroup .advantage .textGroup .PGroup p {
   margin-bottom: 0.35rem;
+  letter-spacing: 0.2px;
+  line-height: 1.25;
 }
 
 .service {
@@ -429,56 +520,98 @@ img {
   text-align: center;
   max-width: 1600px;
   margin: 0 auto;
+  color: #fff;
+  /* 定义点移动的动画 */
 }
 .service h3 {
-  font-size: 2rem;
-  margin: 1rem 0 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.75rem;
+  font-weight: bold;
+  color: #ff7a00;
+  letter-spacing: 10px;
+  text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
 }
-.service .stepScrollBar {
-  width: 90%;
-  height: 4px;
-  background-color: #eee;
+.service .serviceGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.service .serviceGroup .StepGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  /* 动画控制 */
+}
+.service .serviceGroup .StepGroup .stepItem {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+.service .serviceGroup .StepGroup img {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  filter: grayscale(0.5);
+  transform: scale(1); /* 默认大小 */
+  transition: transform 1s ease, opacity 1s ease;
+}
+.service .serviceGroup .StepGroup img.active {
+  opacity: 1; /* 高亮显示 */
+  transform: scale(1.5); /* 放大 */
+  filter: grayscale(0);
+}
+@keyframes scaleEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.service .serviceGroup .progressGroup {
+  position: absolute;
+  width: 80%;
+  margin-left: 10%;
+  height: 10px;
+  top: 47%;
+  left: 0;
+  z-index: -1;
+}
+.service .serviceGroup .progressGroup .progress {
+  width: 100%;
+  background-color: #ddd;
+  height: 10px;
+  position: relative;
+}
+.service .serviceGroup .progressGroup .progressDot {
   position: absolute;
   top: 50%;
   left: 5%;
-}
-.service .stepScrollBar .progress {
-  height: 4px;
-  width: 0;
-  background-color: #345;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: width 0.3s ease-in-out;
-}
-.service .stepGroup {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  width: 80%;
-  left: 10%;
-}
-.service .stepGroup .step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.service .stepGroup .step .stepImg {
-  width: 150px;
-  height: 150px;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #fbc02d;
   border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 0 0 10px #e3732d;
-  margin-top: 2rem;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  opacity: 0;
-  transform: scale(0.5);
+  box-shadow: 0 0 20px 5px rgba(251, 192, 45, 0.8), 0 0 30px 10px rgba(251, 192, 45, 0.5);
+  animation: moveDot 15s linear infinite;
 }
-.service .stepGroup .step h4 {
-  color: #222;
-  opacity: 1;
-  margin-top: 1rem;
-  text-align: center;
+@keyframes moveDot {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .formBox {
@@ -759,6 +892,101 @@ img {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   display: none;
+}
+
+#values {
+  padding-bottom: 2rem;
+}
+#values .section-title {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 2.75rem;
+  font-weight: bold;
+  color: #ff7a00;
+  letter-spacing: 10px;
+  text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
+}
+#values .values {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#values .values .value {
+  flex: 1 1 calc(33.333% - 20px);
+  background: black;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#values .values .value:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+#values .values .value img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+#values .values .value h3 {
+  font-size: 1.75rem;
+  color: #ff7a00;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+#values .values .value p {
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  color: #ccc;
+  line-height: 1.5;
+  text-align: left;
+  padding: 0 5%;
+}
+
+.cta-banner {
+  background: url("/imgs/cta-bg.jpg") no-repeat center center/cover;
+  text-align: center;
+  padding: 50px 5%;
+  color: #fff;
+  position: relative;
+}
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+.cta-banner .cta-banner-content {
+  position: relative;
+  z-index: 2;
+}
+.cta-banner .cta-banner-content h2 {
+  font-size: 3rem;
+  color: #ff7a00;
+  margin: 0;
+}
+.cta-banner .cta-banner-content a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 30px;
+  font-size: 1.25rem;
+  background: #ff7a00;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.cta-banner .cta-banner-content a:hover {
+  background: #ff9533;
 }
 
 .footer {

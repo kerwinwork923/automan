@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們 - 奧特曼能源有限公司</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/all.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Bebas Neue', sans-serif;
+            background: url('/imgs/high-quality-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 6rem 2rem;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: #ffcc00;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .hero button {
+            padding: 1rem 3rem;
+            font-size: 1.5rem;
+            color: #fff;
+            background: linear-gradient(45deg, #ff8d20, #ff3d00);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4rem 10%;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .about-section img {
+            width: 50%;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section .content {
+            max-width: 50%;
+            padding: 2rem;
+        }
+
+        .about-section h2 {
+            font-size: 3rem;
+            color: #ff8d20;
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-section button {
+            font-size: 1.2rem;
+            color: #fff;
+            background: linear-gradient(45deg, #ff8d20, #ff3d00);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .about-section button:hover {
+            background: linear-gradient(45deg, #ff3d00, #ff8d20);
+        }
+
+        .services {
+            padding: 4rem 10%;
+            background: #fffcf6;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 3rem;
+            color: #ff8d20;
+            margin-bottom: 2rem;
+        }
+
+        .services .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .card {
+            flex: 1 1 calc(33.333% - 2rem);
+            min-width: 280px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0 1rem 1.5rem;
+        }
+
+        .cta {
+            padding: 4rem 2rem;
+            background: linear-gradient(45deg, #ff8d20, #ff3d00);
+            text-align: center;
+            color: #fff;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta button {
+            font-size: 1.5rem;
+            padding: 1rem 3rem;
+            background: #fff;
+            color: #ff3d00;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .cta button:hover {
+            background: #ff3d00;
+            color: #fff;
+        }
+
+        @media screen and (max-width: 992px) {
+            .about-section {
+                flex-direction: column;
+            }
+
+            .about-section img,
+            .about-section .content {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>奧特曼能源有限公司</h1>
+        <p>我們致力於透過太陽能技術，將您的屋頂轉變為穩定收益的金礦。</p>
+        <button>立即諮詢</button>
+    </div>
+
+    <div class="about-section">
+        <img src="/imgs/about.jpg" alt="關於我們">
+        <div class="content">
+            <h2>關於我們</h2>
+            <p>奧特曼能源有限公司是一家專注於太陽能技術與創新的公司。我們提供屋頂出租、自費建置、以及購買電廠等多樣化的服務，幫助客戶實現能源獨立，並創造穩定的被動收入。</p>
+            <button>了解更多</button>
+        </div>
+    </div>
+
+    <div class="services">
+        <h2>我們的服務</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="/imgs/service1.jpg" alt="屋頂出租">
+                <h3>屋頂出租</h3>
+                <p>讓您的閒置屋頂創造價值，享受零風險的穩定收益。</p>
+            </div>
+            <div class="card">
+                <img src="/imgs/service2.jpg" alt="自費建置">
+                <h3>自費建置</h3>
+                <p>高效能太陽能建置方案，助您實現能源自給自足。</p>
+            </div>
+            <div class="card">
+                <img src="/imgs/service3.jpg" alt="購買電廠">
+                <h3>購買電廠</h3>
+                <p>投資未來，讓太陽能電廠成為您穩定收益的來源。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>現在就加入我們的行列！</h2>
+        <p>與奧特曼能源一起開創綠能的未來，享受穩定收益與環保雙贏。</p>
+        <button>立即聯絡</button>
+    </div>
+</body>
+</html>

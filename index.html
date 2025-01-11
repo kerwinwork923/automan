@@ -21,6 +21,19 @@
         </div>
     </div> -->
 
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="mp3/bgMusic.mp3" type="audio/mpeg">
+        您的瀏覽器不支持音頻元素。
+    </audio>
+
+    <!-- 音樂控制按鈕 -->
+    <div class="music-controls">
+
+            <img id="toggleMute" src="imgs/musicOpen.png" alt="音樂開啟">
+    
+
+    </div>
+
     <div class="loading-screen" id="loadingScreen">
         <div class="spinner-container">
             <div class="sun"></div>
@@ -265,7 +278,6 @@
             <img class="logo" src="/imgs/logo.png" alt="">
             <div class="logoText">
                 <h1>奧特曼能源有限公司
-
                 </h1>
                 <h2>
                     <div class="logoLightText">A</div>
@@ -491,44 +503,75 @@
         </div>
     </div>
 
-    <div class="service">
+    <!-- <div class="service">
         <h3>一站式整合服務流程</h3>
-        <div class="stepGroup">
-            <div class="stepScrollBar">
-                <div class="progress"></div>
-            </div>
-            <div class="step" data-step="1">
+        <div class="serviceGroup">
 
-                <img src="./imgs/service1.jpg" class="stepImg" alt="">
-                <h4>Business<br>Development</h4>
-                <h4>案件開發</h4>
-            </div>
-            <div class="step" data-step="2">
 
-                <img src="./imgs/service2.png" class="stepImg" alt="">
-                <h4>DESIGN & PLAN<br></h4>
-                <h4>設計規劃</h4>
-            </div>
-            <div class="step" data-step="3">
+            <div class="StepGroup">
+                <div class="progressGroup">
+                    <div class="progress"></div>
+                    <div class="progressDot"></div>
+                </div>
+                <div class="stepItem" data-step="1">
+                    <div class="stepNumber">1</div>
+                    <img src="./imgs/service1.jpg" class="stepImg" alt="">
+                    <h4>Business<br>Development</h4>
+                    <h4>案件開發</h4>
+                </div>
+                <div class="stepItem" data-step="2">
+                    <div class="stepNumber">2</div>
+                    <img src="./imgs/service2.png" class="stepImg" alt="">
+                    <h4>DESIGN & PLAN<br></h4>
+                    <h4>設計規劃</h4>
+                </div>
+                <div class="stepItem" data-step="3">
+                    <div class="stepNumber">3</div>
+                    <img src="./imgs/service3.jpg" class="stepImg" alt="">
+                    <h4>Apply Permit</h4>
+                    <h4>申請許可</h4>
+                </div>
+                <div class="stepItem" data-step="4">
+                    <div class="stepNumber">4</div>
+                    <img src="./imgs/service4.jpg" class="stepImg" alt="">
+                    <h4>EPC Service</h4>
+                    <h4>施工監造</h4>
+                </div>
+                <div class="stepItem" data-step="5">
+                    <div class="stepNumber">5</div>
+                    <img src="./imgs/service5.jpg" class="stepImg" alt="">
+                    <h4>Operation<br>Maintain</h4>
+                    <h4>系統維運</h4>
+                </div>
 
-                <img src="./imgs/service3.jpg" class="stepImg" alt="">
-                <h4>Apply Permit</h4>
-                <h4>申請許可</h4>
             </div>
-            <div class="step" data-step="4">
 
-                <img src="./imgs/service4.jpg" class="stepImg" alt="">
-                <h4>EPC Service</h4>
-                <h4>施工監造</h4>
+        </div>
+
+
+    </div> -->
+
+
+    <section class="section" id="values">
+        <h2 class="section-title">核心價值</h2>
+        <div class="values">
+            <div class="value">
+                <img src="/imgs/solarBoard.png" alt="Quality">
+                <h3>品質保證</h3>
+                <p>採用最先進的技術與設備，確保每個項目的高效與耐久。</p>
             </div>
-            <div class="step" data-step="5">
-
-                <img src="./imgs/service5.jpg" class="stepImg" alt="">
-                <h4>Operation<br>Maintain</h4>
-                <h4>系統維運</h4>
+            <div class="value">
+                <img src="/imgs/hat.png" alt="Innovation">
+                <h3>創新引領</h3>
+                <p>不斷探索新的能源解決方案，為客戶帶來最大的投資回報。</p>
+            </div>
+            <div class="value">
+                <img src="/imgs/handshake.png" alt="Service">
+                <h3>卓越服務</h3>
+                <p>專業團隊全天候提供支持，確保客戶的滿意與信賴。</p>
             </div>
         </div>
-    </div>
+    </section>
 
 
 
@@ -677,36 +720,11 @@
 
 
 
-    const progress = document.querySelector('.progress');
-    const steps = document.querySelectorAll('.step');
-    let currentStep = 0;
-
-    // 模擬進度條的動畫
-    function updateProgressBar(step) {
-        const progressPercentage = ((step + 1) / steps.length) * 100;
-        progress.style.width = progressPercentage + '%';
-    }
-
-    // 更新步驟樣式
-    function updateStep(step) {
-        steps.forEach((s, index) => {
-            if (index <= step) {
-                s.classList.add('active');
-            } else {
-                s.classList.remove('active');
-            }
-        });
-    }
 
 
 
-    // 模擬滾動或按鈕觸發進度更新
-    document.addEventListener('scroll', () => {
-        // 假設滾動觸發更新步驟
-        currentStep = Math.min(Math.floor(window.scrollY / 200), steps.length - 1);
-        updateProgressBar(currentStep);
-        updateStep(currentStep);
-    });
+
+
 
     //切換表單 
     const formBox = document.querySelector(".formBox")
@@ -912,70 +930,51 @@
         element.style.setProperty('--delay', `${index * 0.2}s`);
     });
 
+    const toggleMute = document.querySelector("#toggleMute")
+    const backgroundMusic = document.querySelector('#backgroundMusic');
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const steps = document.querySelectorAll(".step");
-        const progressBar = document.querySelector(".progress");
-        const totalSteps = steps.length;
+    
+    function isPlaying(audio) {
+  return !audio.paused; 
+}
 
-        const cycleTime = 30000; // 总动画时间 (15 秒)
-        const stepTime = cycleTime / totalSteps; // 每步的时间
-        let currentStep = 0;
-
-        function updateSteps(stepIndex) {
-            steps.forEach((step, index) => {
-                const img = step.querySelector(".stepImg");
-                if (index === stepIndex) {
-                    img.style.opacity = "1"; // 当前步骤图片显示
-                    img.style.transform = "scale(1)"; // 当前步骤图片放大
-                    img.style.transition = "transform 1s ease, opacity 1s ease"; // 添加过渡动画
-                } else {
-                    img.style.opacity = "0"; // 其他步骤图片隐藏
-                    img.style.transform = "scale(0.5)"; // 其他步骤图片缩小
-                    img.style.transition = "transform 1s ease, opacity 0.5s ease"; // 添加过渡动画
-                }
-            });
+    toggleMute.addEventListener("click", function () {
+  
+        if (isPlaying(backgroundMusic)) {
+            backgroundMusic.pause();
+            toggleMute.src = 'imgs/musicClose.png';
+            toggleMute.alt = '音樂關閉';
+        } else {
+            backgroundMusic.play();
+            toggleMute.src = 'imgs/musicOpen.png';
+            toggleMute.alt = '音樂開啟';
         }
+    }, false)
+    // //
+    // document.addEventListener("DOMContentLoaded", () => {
+    //     const stepItems = document.querySelectorAll(".stepItem img");
+    //     let currentIndex = 0;
 
-        function startProgressCycle() {
-            let startTime = Date.now();
+    //     function updateActiveImage() {
+    //         // 移除所有图片的 active 类名
+    //         stepItems.forEach((img) => img.classList.remove("active"));
 
-            // 设置进度条的初始动画
-            progressBar.style.transition = `width ${cycleTime / 1200}s linear`;
-            progressBar.style.width = "100%";
+    //         // 给当前图片添加 active 类名
+    //         stepItems[currentIndex].classList.add("active");
 
-            function progressLoop() {
-                const elapsedTime = Date.now() - startTime;
-                const progressPercentage = Math.min((elapsedTime / cycleTime) * 100, 100);
+    //         // 更新索引，确保循环播放
+    //         currentIndex = (currentIndex + 1) % stepItems.length;
+    //     }
 
-                // 更新当前步骤
-                const stepIndex = Math.floor((elapsedTime / stepTime) % totalSteps);
-                if (stepIndex !== currentStep) {
-                    currentStep = stepIndex;
-                    updateSteps(currentStep); // 平滑切换图片
-                }
+    //     // 初始化第一个图片为 active
+    //     updateActiveImage();
 
-                // 检查是否需要重置进度条
-                if (elapsedTime >= cycleTime) {
-                    progressBar.style.transition = "none"; // 暂停动画
-                    progressBar.style.width = "0%"; // 重置进度条
-                    setTimeout(() => {
-                        progressBar.style.transition = `width ${cycleTime / 1200}s linear`;
-                        progressBar.style.width = "100%";
-                        startTime = Date.now(); // 重置开始时间
-                    }, 50); // 小延迟确保重置
-                }
+    //     // 每2秒更新一次图片
+    //     setInterval(updateActiveImage, 3000);
+    // });
 
-                requestAnimationFrame(progressLoop);
-            }
 
-            progressLoop(); // 启动循环
-        }
 
-        // 初始化并启动循环
-        updateSteps(0);
-        startProgressCycle();
-    });
 
 </script>
 
@@ -1259,19 +1258,7 @@
         /* 使用 JS 動態添加延遲 */
     }
 
-    @keyframes lightEffect {
-        0% {
-            background-position: 200% 0;
 
-            /* 光效從外部開始 */
-        }
-
-        100% {
-            background-position: 0% 0;
-
-            /* 光效滑到外部 */
-        }
-    }
 
 
     .indexSwiper .lightText {

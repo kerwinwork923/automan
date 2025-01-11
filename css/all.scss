@@ -135,14 +135,41 @@ img {
     max-width: 100%;
 }
 
-
 /* Reset and basic styling */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
     // font-family: 'Bebas Neue', sans-serif;
 }
+
+
+.music-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: rgba($color: #fff, $alpha: .5);
+    backdrop-filter: blur(2px);
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.music-controls img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+
+
+.music-controls img:hover {
+    transform: scale(1.1);
+}
+
+
 
 /* Loading screen styles */
 .loading-screen {
@@ -157,15 +184,14 @@ body, html {
     height: 100%;
     background-color: rgba(22, 22, 22, 1);
     z-index: 9999;
-    opacity: 1; 
-    transition: opacity 1s ease-out; 
+    opacity: 1;
+    transition: opacity 1s ease-out;
 }
 
 .loading-screen.hidden {
     opacity: 0;
     pointer-events: none;
 }
-
 
 .spinner-container {
     display: flex;
@@ -198,17 +224,14 @@ body, html {
     text-align: center;
 }
 
-
-
 .sun {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     background: radial-gradient(circle, #ffb800 10%, #ff7a00 60%, #ff0000 100%);
     animation: rotateSun 2s linear infinite;
-    box-shadow: 0 0 20px rgba($color: #ff7a00, $alpha: 1.0);
+    box-shadow: 0 0 20px rgba($color: #ff7a00, $alpha: 1);
 }
-
 
 @keyframes rotateSun {
     0% {
@@ -227,10 +250,8 @@ body, html {
     text-transform: uppercase;
 }
 
-  
-
 body {
-    background-color: #fbf7f6;
+    background: #111;
 }
 
 .neonText {
@@ -246,9 +267,9 @@ body {
 }
 
 img {
-    user-drag: none; 
-    -webkit-user-drag: none; 
-    pointer-events: none; 
+    user-drag: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
     user-select: none;
 }
 
@@ -278,22 +299,80 @@ img {
                 font-size: 2.25rem;
                 letter-spacing: 0.4px;
                 white-space: nowrap;
-               
             }
-            h2{
-                color: $color-primary;
-                letter-spacing: 0.2px;
-                text-shadow: 0 0 2px $color-primary;
-                letter-spacing: 2.5px;
-                font-size: 2rem;
-                white-space: nowrap;
-                display: flex;
-                font-weight: bold;
-                
-  
+            h2 {
+                display: flex; // 確保子元素排列在一行
+
+                align-items: center;
+                gap: 8px; // 字母間距調整，根據需求設定
+
+             @keyframes waveLightEffect {
+  0% {
+    background-position: 200% 0;
+  }
+  90% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 0% 0; /* 停止在最後的狀態 */
+  }
+}
+
+.logoLightText {
+  font-size: 2.25rem;
+  font-weight: bold;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 2px;
+  color: transparent;
+  background: linear-gradient(270deg, #ffffff 0%, #dad0ca 50%, #ff4500 100%);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: waveLightEffect 2s linear infinite; /* 動畫總時長設定 */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+  // 控制動畫時間與停頓
+  animation-duration: 3.5s; /* 2秒動畫 + 3秒停頓 */
+  animation-timing-function: linear; /* 線性運動 */
+  animation-iteration-count: infinite; /* 循環播放 */
+}
+                // 對每個字母應用延遲，產生波浪效果
+                .logoLightText:nth-child(1) {
+                    animation-delay: 0s;
+                }
+                .logoLightText:nth-child(2) {
+                    animation-delay: 0.1s;
+                }
+                .logoLightText:nth-child(3) {
+                    animation-delay: 0.2s;
+                }
+                .logoLightText:nth-child(4) {
+                    animation-delay: 0.3s;
+                }
+                .logoLightText:nth-child(5) {
+                    animation-delay: 0.4s;
+                }
+                .logoLightText:nth-child(6) {
+                    animation-delay: 0.5s;
+                }
+                .logoLightText:nth-child(7) {
+                    animation-delay: 0.6s;
+                }
             }
-           
         }
+
+        // 光效動畫：背景從左到右流動
+        @keyframes waveLightEffect {
+            0% {
+              background-position: 200% 0;
+            }
+            90% {
+              background-position: 0% 0;
+            }
+            100% {
+              background-position: 0% 0; /* 停止在最後的狀態 */
+            }
+          }
     }
     .menuBox {
         display: flex;
@@ -311,7 +390,8 @@ img {
             cursor: pointer;
             transition: 0.25s all ease;
             border: transparent 1px solid;
-
+            font-size: 1rem;
+            letter-spacing: 0.5px;
             &:hover {
                 background-color: #fff;
                 border: $color-primary 1px solid;
@@ -336,19 +416,33 @@ img {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: #fffaf6;
+    background-color: #222;
+
     .consultBtn {
-        width: 20%;
+        // width: 20%;
+        // font-size: 1.75rem;
+        // background-color: #ff8d3b;
+        // border: none;
+        // padding: 0.25rem 0;
+        // color: #fff;
+        // border-radius: 8px;
+        // margin-top: 2rem;
+        // cursor: pointerlogoBox;
+        // box-shadow: 0 0 10px rgba($color: #fff, $alpha: 0.1);
+        // transition: 0.3s ease all;
+        padding: 0.5rem 0;
         font-size: 1.75rem;
-        background-color: #ff8d3b;
-        border: none;
-        padding: 0.25rem 0;
         color: #fff;
-        border-radius: 8px;
         margin-top: 2rem;
+        background: linear-gradient(45deg, #ff8d20, #ff3d00);
+        border: none;
+        border-radius: 50px;
+        width: 20%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        box-shadow: 0 0 10px rgba($color: #fff, $alpha: 0.1);
-        transition: 0.3s ease all;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
     }
     .ourVision {
         display: flex;
@@ -362,9 +456,12 @@ img {
 
         .textGroup {
             text-align: center;
-            color: $color-dark;
+
+            color: #fff;
             h3 {
                 font-size: 5rem;
+                letter-spacing: 10px;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
             }
             h4 {
                 margin-top: 1.5rem;
@@ -396,10 +493,9 @@ img {
     }
 }
 
-
-
 .Advantages {
     margin-top: 1.5rem;
+    color: #fff;
     img {
         width: 150px;
         margin: 0 auto;
@@ -408,6 +504,9 @@ img {
         text-align: center;
         font-size: 2.75rem;
         font-weight: bold;
+        color: #ff7a00;
+        letter-spacing: 10px;
+        text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
     }
     .advGroup {
         gap: 5%;
@@ -426,12 +525,17 @@ img {
                 h3 {
                     font-size: 1.75rem;
                     font-weight: bold;
-                    margin-top: 0.5rem;
+                    margin-top: 2rem;
+                    letter-spacing: 0.5px;
+                    margin-bottom: 0.5rem;
                 }
                 .PGroup {
-                    margin-top: 0.5rem;
+                    margin-top: 0.75rem;
                     p {
+                        
                         margin-bottom: 0.35rem;
+                        letter-spacing: .2px;
+                        line-height: 1.25;
                     }
                 }
             }
@@ -445,74 +549,116 @@ img {
     text-align: center;
     max-width: 1600px;
     margin: 0 auto;
+    color: #fff;
     h3 {
-        font-size: 2rem;
-        margin: 1rem 0 2rem;
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 2.75rem;
+        font-weight: bold;
+        color: #ff7a00;
+        letter-spacing: 10px;
+        text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
     }
 
-    .stepScrollBar {
-        width: 90%;
-        height: 4px;
-        background-color: #eee;
-        position: absolute;
-        top: 50%;
-        left: 5%;
+    .serviceGroup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 1.5rem;
 
-        .progress {
-            height: 4px;
-            width: 0;
-            background-color: #345;
+        .StepGroup {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        
+            .stepItem {
+                flex: 1; // 撐開空間
+                text-align: center; // 置中
+                position: relative;
+            }
+        
+            img {
+                width: 125px;
+                height: 125px;
+                border-radius: 50%;
+                margin-bottom: 1rem;
+                background-color: #fff;
+        
+                filter:grayscale(.5);
+                transform: scale(1); /* 默认大小 */
+                transition: transform 1s ease, opacity 1s ease; 
+            }
+        
+            /* 动画控制 */
+            img.active {
+                opacity: 1; /* 高亮显示 */
+                transform: scale(1.5); /* 放大 */
+                filter:grayscale(0);
+            }
+        }
+        
+        
+        @keyframes scaleEffect {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5); // 最大放大比例
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .progressGroup {
             position: absolute;
-            top: 0;
+
+            width: 80%;
+            margin-left: 10%;
+            height: 10px;
+            top: 47%;
             left: 0;
-            transition: width 0.3s ease-in-out;
+            z-index: -1;
+            .progress {
+                width: 100%;
+                
+                background-color: #ddd;
+                height: 10px;
+         
+                position: relative;
+            }
+
+            .progressDot {
+                position: absolute;
+                top: 50%;
+                left: 5%;
+                transform: translate(-50%, -50%);
+                width: 20px;
+                height: 20px;
+                background-color: #fbc02d;
+                border-radius: 50%;
+                box-shadow:
+                    0 0 20px 5px rgba(251, 192, 45, 0.8),
+                    0 0 30px 10px rgba(251, 192, 45, 0.5);
+                animation: moveDot 15s linear infinite;
+            }
         }
     }
 
-    .stepGroup {
-        display: flex;
-        justify-content: space-between;
-        position: absolute;
-        width: 80%;
-        left: 10%;
+    /* 定义点移动的动画 */
+    @keyframes moveDot {
+        0% {
+            left: 0%;
+        }
 
-        .step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .stepImg {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                background-color: #fff;
-                box-shadow: 0 0 10px #e3732d;
-                margin-top: 2rem;
-                transition: transform 0.5s ease, opacity 0.5s ease; // 设置平滑过渡
-                opacity: 0; // 初始图片不可见
-                transform: scale(0.5); // 初始图片缩小
-            }
-
-            h4 {
-                color: #222;
-                opacity: 1;
-                margin-top: 1rem;
-                text-align: center;
-            }
+        100% {
+            left: 100%;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .formBox {
     background-color: #999;
@@ -580,6 +726,8 @@ img {
             }
         }
     }
+
+
 
     .main {
         width: 60%;
@@ -751,6 +899,123 @@ img {
 
     backdrop-filter: blur(10px);
     display: none;
+}
+
+
+// 定義全局變數
+$primary-color: #ff7a00;
+$secondary-color: #111;
+$text-color: #fff;
+$muted-color: #ccc;
+$font-family: 'Bebas Neue', sans-serif;
+
+// 核心價值樣式
+#values {
+    padding-bottom: 2rem;
+  .section-title {
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 2.75rem;
+    font-weight: bold;
+    color: #ff7a00;
+    letter-spacing: 10px;
+    text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
+    
+  }
+
+  .values {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .value {
+      flex: 1 1 calc(33.333% - 20px);
+      background: darken($secondary-color, 10%);
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      img {
+        width: 200px;
+        height:200px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+      }
+
+      h3 {
+        font-size: 1.75rem;
+        color: $primary-color;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 1.25rem;
+        letter-spacing: 2px;
+        color: $muted-color;
+        line-height: 1.5;
+        text-align: left;
+        padding: 0 5%;
+      }
+    }
+  }
+}
+
+// CTA Banner
+.cta-banner {
+  background: url('/imgs/cta-bg.jpg') no-repeat center center / cover;
+  text-align: center;
+  padding: 50px 5%;
+  color: $text-color;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  .cta-banner-content {
+    position: relative;
+    z-index: 2;
+
+    h2 {
+      font-size: 3rem;
+      color: $primary-color;
+      margin: 0;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 30px;
+      font-size: 1.25rem;
+      background: $primary-color;
+      color: $text-color;
+      text-transform: uppercase;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+
+      &:hover {
+        background: lighten($primary-color, 10%);
+      }
+    }
+  }
 }
 
 .footer {
