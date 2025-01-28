@@ -143,14 +143,20 @@ html {
     height: 100%;
     // font-family: 'Bebas Neue', sans-serif;
 }
+a {
+    text-decoration: none;
+}
 
+body.no-scroll {
+    overflow: hidden; /* 隱藏背景的滾動條 */
+}
 
 .music-controls {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    background-color: rgba($color: #fff, $alpha: .5);
+    background-color: rgba($color: #fff, $alpha: 0.5);
     backdrop-filter: blur(2px);
     border-radius: 8px;
     padding: 6px;
@@ -164,12 +170,9 @@ html {
     pointer-events: auto;
 }
 
-
 .music-controls img:hover {
     transform: scale(1.1);
 }
-
-
 
 /* Loading screen styles */
 .loading-screen {
@@ -288,7 +291,7 @@ img {
         cursor: pointer;
         .logo {
             height: 80px;
-            transform: translateY(-1%);
+            transform: translateY(-2%);
         }
         .logoText {
             h1 {
@@ -306,36 +309,36 @@ img {
                 align-items: center;
                 gap: 8px; // 字母間距調整，根據需求設定
 
-             @keyframes waveLightEffect {
-  0% {
-    background-position: 200% 0;
-  }
-  90% {
-    background-position: 0% 0;
-  }
-  100% {
-    background-position: 0% 0; /* 停止在最後的狀態 */
-  }
-}
+                @keyframes waveLightEffect {
+                    0% {
+                        background-position: 200% 0;
+                    }
+                    90% {
+                        background-position: 0% 0;
+                    }
+                    100% {
+                        background-position: 0% 0; /* 停止在最後的狀態 */
+                    }
+                }
 
-.logoLightText {
-  font-size: 2.25rem;
-  font-weight: bold;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 2px;
-  color: transparent;
-  background: linear-gradient(270deg, #ffffff 0%, #dad0ca 50%, #ff4500 100%);
-  background-size: 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: waveLightEffect 2s linear infinite; /* 動畫總時長設定 */
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-
-  // 控制動畫時間與停頓
-  animation-duration: 3.5s; /* 2秒動畫 + 3秒停頓 */
-  animation-timing-function: linear; /* 線性運動 */
-  animation-iteration-count: infinite; /* 循環播放 */
-}
+                .logoLightText {
+                    font-size: 2.25rem;
+                    font-weight: bold;
+                    font-family: "Bebas Neue", sans-serif;
+                    letter-spacing: 2px;
+                    color: transparent;
+                    background: linear-gradient(270deg, #ffffff 0%, #dad0ca 50%, #ff4500 100%);
+                    background-size: 300%;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    animation: waveLightEffect 2s linear infinite; /* 動畫總時長設定 */
+                    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                    margin-top: 0.15rem;
+                    // 控制動畫時間與停頓
+                    animation-duration: 3.5s; /* 2秒動畫 + 3秒停頓 */
+                    animation-timing-function: linear; /* 線性運動 */
+                    animation-iteration-count: infinite; /* 循環播放 */
+                }
                 // 對每個字母應用延遲，產生波浪效果
                 .logoLightText:nth-child(1) {
                     animation-delay: 0s;
@@ -364,15 +367,15 @@ img {
         // 光效動畫：背景從左到右流動
         @keyframes waveLightEffect {
             0% {
-              background-position: 200% 0;
+                background-position: 200% 0;
             }
             90% {
-              background-position: 0% 0;
+                background-position: 0% 0;
             }
             100% {
-              background-position: 0% 0; /* 停止在最後的狀態 */
+                background-position: 0% 0; /* 停止在最後的狀態 */
             }
-          }
+        }
     }
     .menuBox {
         display: flex;
@@ -508,6 +511,15 @@ img {
         letter-spacing: 10px;
         text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
     }
+    small{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 0.75rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
     .advGroup {
         gap: 5%;
         display: flex;
@@ -532,9 +544,8 @@ img {
                 .PGroup {
                     margin-top: 0.75rem;
                     p {
-                        
                         margin-bottom: 0.35rem;
-                        letter-spacing: .2px;
+                        letter-spacing: 0.2px;
                         line-height: 1.25;
                     }
                 }
@@ -573,34 +584,35 @@ img {
             align-items: center;
             width: 100%;
             position: relative;
-        
+
             .stepItem {
                 flex: 1; // 撐開空間
                 text-align: center; // 置中
                 position: relative;
             }
-        
+
             img {
                 width: 125px;
                 height: 125px;
                 border-radius: 50%;
                 margin-bottom: 1rem;
                 background-color: #fff;
-        
-                filter:grayscale(.5);
+
+                filter: grayscale(0.5);
                 transform: scale(1); /* 默认大小 */
-                transition: transform 1s ease, opacity 1s ease; 
+                transition:
+                    transform 1s ease,
+                    opacity 1s ease;
             }
-        
+
             /* 动画控制 */
             img.active {
                 opacity: 1; /* 高亮显示 */
                 transform: scale(1.5); /* 放大 */
-                filter:grayscale(0);
+                filter: grayscale(0);
             }
         }
-        
-        
+
         @keyframes scaleEffect {
             0% {
                 transform: scale(1);
@@ -612,7 +624,7 @@ img {
                 transform: scale(1);
             }
         }
-        
+
         .progressGroup {
             position: absolute;
 
@@ -624,10 +636,10 @@ img {
             z-index: -1;
             .progress {
                 width: 100%;
-                
+
                 background-color: #ddd;
                 height: 10px;
-         
+
                 position: relative;
             }
 
@@ -726,8 +738,6 @@ img {
             }
         }
     }
-
-
 
     .main {
         width: 60%;
@@ -901,121 +911,121 @@ img {
     display: none;
 }
 
-
 // 定義全局變數
 $primary-color: #ff7a00;
 $secondary-color: #111;
 $text-color: #fff;
 $muted-color: #ccc;
-$font-family: 'Bebas Neue', sans-serif;
+$font-family: "Bebas Neue", sans-serif;
 
 // 核心價值樣式
 #values {
     padding-bottom: 2rem;
-  .section-title {
-    text-align: center;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    font-size: 2.75rem;
-    font-weight: bold;
-    color: #ff7a00;
-    letter-spacing: 10px;
-    text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
-    
-  }
-
-  .values {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-
-    .value {
-      flex: 1 1 calc(33.333% - 20px);
-      background: darken($secondary-color, 10%);
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-      transition: transform 0.3s, box-shadow 0.3s;
-
-      &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-      }
-
-      img {
-        width: 200px;
-        height:200px;
-        margin-bottom: 15px;
-        border-radius: 8px;
-      }
-
-      h3 {
-        font-size: 1.75rem;
-        color: $primary-color;
-        margin-bottom: 10px;
-        letter-spacing: 1px;
+    .section-title {
+        text-align: center;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        font-size: 2.75rem;
         font-weight: bold;
-      }
-
-      p {
-        font-size: 1.25rem;
-        letter-spacing: 2px;
-        color: $muted-color;
-        line-height: 1.5;
-        text-align: left;
-        padding: 0 5%;
-      }
+        color: #ff7a00;
+        letter-spacing: 10px;
+        text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
     }
-  }
+
+    .values {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        .value {
+            flex: 1 1 calc(33.333% - 20px);
+            background: darken($secondary-color, 10%);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
+
+            &:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            }
+
+            img {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+                color: $primary-color;
+                margin-bottom: 10px;
+                letter-spacing: 1px;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 1.25rem;
+                letter-spacing: 2px;
+                color: $muted-color;
+                line-height: 1.5;
+                text-align: left;
+                padding: 0 5%;
+            }
+        }
+    }
 }
 
 // CTA Banner
 .cta-banner {
-  background: url('/imgs/cta-bg.jpg') no-repeat center center / cover;
-  text-align: center;
-  padding: 50px 5%;
-  color: $text-color;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-  }
-
-  .cta-banner-content {
+    background: url("/imgs/cta-bg.jpg") no-repeat center center / cover;
+    text-align: center;
+    padding: 50px 5%;
+    color: $text-color;
     position: relative;
-    z-index: 2;
 
-    h2 {
-      font-size: 3rem;
-      color: $primary-color;
-      margin: 0;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1;
     }
 
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 30px;
-      font-size: 1.25rem;
-      background: $primary-color;
-      color: $text-color;
-      text-transform: uppercase;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background 0.3s;
+    .cta-banner-content {
+        position: relative;
+        z-index: 2;
 
-      &:hover {
-        background: lighten($primary-color, 10%);
-      }
+        h2 {
+            font-size: 3rem;
+            color: $primary-color;
+            margin: 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 30px;
+            font-size: 1.25rem;
+            background: $primary-color;
+            color: $text-color;
+            text-transform: uppercase;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+
+            &:hover {
+                background: lighten($primary-color, 10%);
+            }
+        }
     }
-  }
 }
 
 .footer {
@@ -1102,6 +1112,7 @@ $font-family: 'Bebas Neue', sans-serif;
                 gap: 2.5%;
                 margin-top: 1rem;
                 .menuBtn {
+                    font-size: 1rem;
                     background-color: $color-light;
                     white-space: nowrap;
                     background-color: $color-blue;
@@ -1143,10 +1154,134 @@ $font-family: 'Bebas Neue', sans-serif;
     }
 }
 
-@media screen and (max-width: 1200px) {
-    * {
+.myNewNav {
+    /* 只是個父容器，看你要不要加定位或 margin 都行 */
+    position: relative;
+    z-index: 9999;
+
+    /* === 右上角漢堡按鈕 === */
+    .myHamburger {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 32px;
+        height: 24px;
+        display: none; /* 預設桌機版隱藏，如要桌機也用可改成 block */
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        z-index: 10001; /* 壓在.myMenuBox之上 */
+
+        .myLine {
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 2px;
+            transition:
+                transform 0.3s,
+                opacity 0.3s;
+        }
+
+        &.active {
+            /* 點擊後三條線變 X */
+            .myLine:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+            .myLine:nth-child(2) {
+                opacity: 0;
+            }
+            .myLine:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+        }
+    }
+
+    /* === 滿版覆蓋選單 === */
+    .myMenuBox {
+        /* 先用空的, 小螢幕再顯示 */
         display: none;
     }
+
+    /* 這裡讓 .myMenuContent 幫你居中內容 */
+    .myMenuContent {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li {
+                margin: 1rem 0;
+                line-height: 2;
+                letter-spacing: 0.5px;
+                a {
+                    color: #fff;
+                    font-size: 1.75rem;
+                    text-decoration: none;
+                    transition: color 0.3s;
+                    &:hover {
+                        color: #ff9900;
+                    }
+                }
+            }
+        }
+    }
+    .contactEmail {
+        position: absolute;
+        width: 100%;
+        background-color: rgba($color: #222, $alpha: 0.2);
+        bottom: 0%;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .75rem;
+        padding: 0.5rem;
+        letter-spacing: 2px;
+        font-size: 1rem;
+       font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* ==== RWD (小於等於576px) 時，漢堡 & 滿版選單的樣式 ==== */
+    @media (max-width: 576px) {
+        .myHamburger {
+            display: flex; /* 顯示漢堡按鈕 */
+        }
+        .myMenuBox {
+            /* 滿版定位 */
+            display: block; /* 讓它在小螢幕可以出現 (預設先藏在下面的opacity=0) */
+            position: fixed;
+            inset: 0; /* top:0; left:0; right:0; bottom:0; */
+            /* 太陽能板線條 + 玻璃感背景 (可自行替換) */
+            background: repeating-linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.05) 0px,
+                    rgba(255, 255, 255, 0.05) 2px,
+                    transparent 2px,
+                    transparent 20px
+                ),
+                rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+
+            /* 預設不顯示(透明) */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 10000;
+            &.active {
+                /* 點擊後淡入 */
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
     .navbar {
         padding: 16px 2%;
         .logoBox {
@@ -1178,6 +1313,265 @@ $font-family: 'Bebas Neue', sans-serif;
             }
         }
     }
+
+    .formBox {
+        top: 50%;
+        left: 50%;
+        width: 90%;
+
+        .close {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            width: 3.25rem;
+        }
+        .support {
+            width: 40%;
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .contactGroup {
+                width: 100%;
+                bottom: 0%;
+                left: 50%;
+                padding: 0;
+                margin: 0;
+                transform: translate(-50%, 0);
+
+                .contactEmail {
+                    font-size: 1.75rem;
+
+                    letter-spacing: 0.15px;
+                    margin: 0;
+                    padding: 0.75rem;
+
+                    gap: 0.5rem;
+                    img {
+                        width: 22px;
+                        transform: translateY(2px);
+                    }
+                }
+            }
+        }
+
+        .main {
+            width: 70%;
+            padding: 16px 2.5% 24px;
+
+            h3 {
+                font-size: 2.25rem;
+                letter-spacing: 2px;
+            }
+
+            .btnList {
+                gap: 0.5rem;
+                padding: 0.5rem 0 0.5rem;
+
+                button {
+                    font-size: 1rem;
+
+                    padding: 0.25rem 0.75rem;
+                    transition: all 0.25s ease;
+                }
+
+                .btnActive {
+                }
+            }
+
+            .inputGroup {
+                width: 100%;
+
+                margin-bottom: 0.5rem;
+
+                padding-top: 12px;
+                padding-bottom: 12px;
+                font-size: 1.25rem;
+                border-radius: 12px;
+
+                input[type="text"],
+                input[type="tel"],
+                input[type="email"],
+                select {
+                    width: 77.5%;
+                    font-size: 1.25rem;
+                }
+
+                textarea {
+                    width: 100%;
+                }
+
+                label {
+                    width: 22.5%;
+                    font-size: 1.25rem;
+
+                    padding-left: 1rem;
+                }
+            }
+
+            .submitBtn {
+                width: 59%;
+
+                bottom: 3%;
+                margin-top: 0.5rem;
+                padding: 8px;
+                letter-spacing: 5px;
+
+                font-size: 20px;
+                border-radius: 99px;
+            }
+            .form2 {
+                display: none;
+            }
+            .form3 {
+                display: none;
+            }
+
+            .radioWrap {
+                margin-left: auto;
+                width: 18%;
+                .radioGroup {
+                    gap: 0.7rem;
+                    margin: 0;
+                    padding: 0;
+
+                    label {
+                        margin: 0;
+                        padding: 0;
+                        position: relative;
+                    }
+                    input {
+                        margin: 0;
+                        padding: 0;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .Advantages {
+        margin-top: 1.5rem;
+
+        img {
+            width: 150px;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: 2.75rem;
+            letter-spacing: 10px;
+            text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
+        }
+      
+        .advGroup {
+            margin-top: 2rem;
+            flex-wrap: wrap;
+
+            .advantage {
+                width: 40%;
+                // margin-top: 1rem;
+                // margin-bottom: 4rem;
+                margin: 0;
+                margin-bottom: 1.5rem;
+                .textGroup {
+                    h3 {
+                        font-size: 1.75rem;
+                        margin-top: 2rem;
+                        letter-spacing: 0.5px;
+                        margin-bottom: 0.5rem;
+                    }
+                    .PGroup {
+                        margin-top: 0.75rem;
+                        p {
+                            margin-bottom: 0.35rem;
+                            letter-spacing: 0.2px;
+                            line-height: 1.25;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer {
+        padding: 1.5rem;
+        .footerContentGroup {
+            gap: 1%;
+            .footerContent1 {
+                width: 40%;
+
+                .logo {
+                    height: 80px;
+                    transform: translateY(-1%);
+                }
+                .logoText {
+                    h1 {
+                        display: flex;
+                        flex-direction: column;
+
+                        font-size: 2.25rem;
+                        letter-spacing: 0.4px;
+
+                        span {
+                        }
+                    }
+                }
+            }
+            .footerContent2 {
+                width: 59%;
+
+                .contentItem {
+                    width: 50%;
+
+                    padding: 0.5rem 0;
+                    .iconGroup {
+                        gap: 10px;
+
+                        img {
+                            width: 24px;
+                        }
+                    }
+                    h4 {
+                        margin-left: 0.5rem;
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+            .footerContent3 {
+                width: 100%;
+                font-size: 2rem;
+
+                margin-top: 1rem;
+                &::before {
+                }
+                .footerBtnGroup {
+                    margin-top: 1rem;
+
+                    .menuBtn {
+                        &:hover {
+                        }
+                    }
+                    .MenuTriger {
+                    }
+                }
+                .fansGroup {
+                    margin: 0.75rem 6% 0;
+                    img {
+                    }
+                }
+            }
+        }
+        .copyRight {
+            margin-top: 1rem;
+        }
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -1185,8 +1579,8 @@ $font-family: 'Bebas Neue', sans-serif;
         padding: 16px 3%;
         .logoBox {
             .logo {
-                height: 70px;
-                transform: translateY(-1%);
+                height: 64px;
+                transform: translateY(-2%);
             }
             .logoText {
                 h1 {
@@ -1197,8 +1591,15 @@ $font-family: 'Bebas Neue', sans-serif;
                         font-size: 1.5rem;
                     }
                 }
+
+                h2 {
+                    .logoLightText {
+                        font-size: 1.75rem;
+                    }
+                }
             }
         }
+
         .menuBox {
             gap: 5.5%;
 
@@ -1210,6 +1611,321 @@ $font-family: 'Bebas Neue', sans-serif;
             }
             .MenuTriger {
             }
+        }
+    }
+
+    .formBox {
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(0 -50%);
+        background-color: #e7e6e6;
+        max-height: 90vh; /* 限制高度，确保可见部分可滚动 */
+        overflow-y: auto; /* 仅垂直滚动 */
+        overflow-x: hidden; /* 避免水平滚动 */
+        .close {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            width: 3.25rem;
+        }
+        .support {
+            display: none;
+        }
+
+        .main {
+            width: 100%;
+            padding: 16px 2.5% 24px;
+
+            h3 {
+                font-size: 2.25rem;
+                letter-spacing: 2px;
+            }
+
+            .btnList {
+                gap: 0.5rem;
+                padding: 0.5rem 0 0.5rem;
+
+                button {
+                    font-size: 1rem;
+
+                    padding: 0.25rem 0.75rem;
+                    transition: all 0.25s ease;
+                }
+
+                .btnActive {
+                }
+            }
+
+            .inputGroup {
+                width: 100%;
+
+                margin-bottom: 0.5rem;
+
+                padding-top: 12px;
+                padding-bottom: 12px;
+                font-size: 1.25rem;
+                border-radius: 12px;
+
+                input[type="text"],
+                input[type="tel"],
+                input[type="email"],
+                select {
+                    width: 77.5%;
+                    font-size: 1.25rem;
+                }
+
+                textarea {
+                    width: 100%;
+                }
+
+                label {
+                    width: 22.5%;
+                    font-size: 1.25rem;
+
+                    padding-left: 1rem;
+                }
+            }
+
+            .submitBtn {
+                position: relative;
+                width: 100%;
+
+                bottom: 3%;
+                margin-top: 0.5rem;
+                padding: 8px;
+                letter-spacing: 5px;
+
+                font-size: 20px;
+                border-radius: 99px;
+                margin-bottom: 0.5rem;
+            }
+            .form2 {
+                display: none;
+            }
+            .form3 {
+                display: none;
+            }
+
+            .radioWrap {
+                margin-left: auto;
+                width: 18%;
+                .radioGroup {
+                    gap: 0.7rem;
+                    margin: 0;
+                    padding: 0;
+
+                    label {
+                        margin: 0;
+                        padding: 0;
+                        position: relative;
+                    }
+                    input {
+                        margin: 0;
+                        padding: 0;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .Advantages {
+        margin-top: 1.5rem;
+        padding-bottom: 1rem;
+        img {
+            width: 120px;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: 2.25rem;
+            letter-spacing: 10px;
+            text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
+        }
+        small{
+      
+            margin-top: 0.75rem;
+            font-size: 1.35rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .advGroup {
+            margin-top: 2rem;
+            flex-wrap: wrap;
+
+            .advantage {
+                width: 46%;
+                // margin-top: 1rem;
+                // margin-bottom: 4rem;
+                margin: 0;
+                margin-bottom: 1rem;
+                .textGroup {
+                    h3 {
+                        font-size: 1.5rem;
+                        margin-top: 1rem;
+                        letter-spacing: 1px;
+                        margin-bottom: 0.5rem;
+                    }
+                    .PGroup {
+                        margin-top: 0.5rem;
+                        p {
+                            margin-bottom: 0.35rem;
+                            letter-spacing: 0.2px;
+                            line-height: 1.25;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .aboutUs {
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+        .consultBtn {
+            padding: 0.5rem 0;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            width: 40%;
+        }
+        .ourVision {
+            display: flex;
+            flex-wrap: wrap;
+            width: 80%;
+            margin: 0 auto;
+            // background-color: $color-primary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            background-color: transparent;
+            .textGroup {
+                text-align: center;
+
+                color: #fff;
+                h3 {
+                    font-size: 2.5rem;
+                    letter-spacing: 10px;
+                    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+                }
+                h4 {
+                    margin-top: 1.5rem;
+                    font-size: 1.25rem;
+                    line-height: 1.5;
+                }
+            }
+        }
+        .videoGroup {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+            filter: brightness(0.4);
+        }
+
+        .videoGroup video {
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .footer {
+        padding: 1.5rem;
+        .footerContentGroup {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1%;
+            .footerContent1 {
+                width: 55%;
+                justify-content: center;
+                .logo {
+                    height: 80px;
+                    transform: translateY(-1%);
+                }
+                .logoText {
+                    h1 {
+                        display: flex;
+                        flex-direction: column;
+
+                        font-size: 1.65rem;
+                        letter-spacing: 0.4px;
+
+                        span {
+                            font-size: 1.65rem;
+                        }
+                    }
+                }
+            }
+            .footerContent2 {
+                width: 44%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                .contentItem {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    white-space: nowrap;
+
+                    padding: 0.5rem 0;
+                    .iconGroup {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        img {
+                            width: 18px;
+                        }
+                    }
+                    h4 {
+                        margin-left: 0.5rem;
+                        font-size: 1rem;
+                    }
+                }
+            }
+            .footerContent3 {
+                width: 100%;
+                font-size: 2rem;
+                text-align: center;
+                margin-top: 1rem;
+                &::before {
+                }
+                .footerBtnGroup {
+                    margin-top: 1rem;
+
+                    .menuBtn {
+                        &:hover {
+                        }
+                    }
+                    .MenuTriger {
+                    }
+                }
+                .fansGroup {
+                    margin: 0.75rem 6% 0;
+                    img {
+                    }
+                }
+            }
+        }
+        .copyRight {
+            text-align: center;
+            margin-top: 1rem;
         }
     }
 }
@@ -1224,12 +1940,14 @@ $font-family: 'Bebas Neue', sans-serif;
             }
             .logoText {
                 h1 {
-                    font-size: 1.5rem;
+                    font-size: 1.25rem;
                     letter-spacing: 0.4px;
                     line-height: 1.05;
-                    span {
-                        letter-spacing: 2.5px;
+                }
+                h2 {
+                    .logoLightText {
                         font-size: 1.25rem;
+                        letter-spacing: 1px;
                     }
                 }
             }
@@ -1245,6 +1963,314 @@ $font-family: 'Bebas Neue', sans-serif;
             }
             .MenuTriger {
             }
+        }
+    }
+
+    .formBox {
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(0 -50%);
+        background-color: #e7e6e6;
+        max-height: 85vh; /* 限制高度，确保可见部分可滚动 */
+        overflow-y: auto; /* 仅垂直滚动 */
+        overflow-x: hidden; /* 避免水平滚动 */
+        .close {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            width: 2.75rem;
+        }
+        .support {
+            display: none;
+        }
+
+        .main {
+            width: 100%;
+            padding: 16px 2.5% 24px;
+
+            h3 {
+                font-size: 1.75rem;
+                letter-spacing: 2px;
+            }
+
+            .btnList {
+                gap: 0.5rem;
+                padding: 0.5rem 0 0.5rem;
+                justify-content: center;
+                margin-top: 0.5rem;
+                button {
+                    font-size: 1rem;
+
+                    padding: 0.25rem 0.75rem;
+                    transition: all 0.25s ease;
+                }
+
+                .btnActive {
+                }
+            }
+
+            .inputGroup {
+                width: 100%;
+
+                margin-bottom: 0.5rem;
+
+                padding-top: 12px;
+                padding-bottom: 12px;
+                font-size: 1.25rem;
+                border-radius: 12px;
+
+                input[type="text"],
+                input[type="tel"],
+                input[type="email"],
+                select {
+                    width: 77.5%;
+                    font-size: 1rem;
+                    padding-left: 1rem;
+                }
+
+                textarea {
+                    width: 100%;
+                    padding-left: 1rem;
+                }
+
+                label {
+                    width: 22.5%;
+                    font-size: 1rem;
+
+                    padding-left: 1rem;
+                }
+            }
+
+            .submitBtn {
+                position: relative;
+                width: 100%;
+
+                bottom: 3%;
+                margin-top: 0.5rem;
+                padding: 8px;
+                letter-spacing: 5px;
+
+                font-size: 20px;
+                border-radius: 99px;
+                margin-bottom: 0.5rem;
+            }
+            .form2 {
+                display: none;
+            }
+            .form3 {
+                display: none;
+            }
+
+            .radioWrap {
+                margin-left: auto;
+                width: 18%;
+                .radioGroup {
+                    gap: 0.7rem;
+                    margin: 0;
+                    padding: 0;
+
+                    label {
+                        margin: 0;
+                        padding: 0;
+                        position: relative;
+                    }
+                    input {
+                        margin: 0;
+                        padding: 0;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .Advantages {
+        margin-top: 1.5rem;
+        padding-bottom: 1rem;
+        img {
+            width: 120px;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: 1.75rem;
+            letter-spacing: 10px;
+            text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
+        }
+        small{
+      
+            margin-top: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .advGroup {
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+
+            .advantage {
+                width: 100%;
+                // margin-top: 1rem;
+                // margin-bottom: 4rem;
+                margin: 0;
+                margin-bottom: .75rem;
+                .textGroup {
+                    h3 {
+                        font-size: 1.5rem;
+                        margin-top: 1rem;
+                        letter-spacing: 1px;
+                        margin-bottom: 0.5rem;
+                    }
+                    .PGroup {
+                        margin-top: 0.5rem;
+                        p {
+                            margin-bottom: 0.35rem;
+                            letter-spacing: 0.2px;
+                            line-height: 1.25;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #values {
+        padding-bottom: 2rem;
+        .section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            letter-spacing: 10px;
+        }
+
+        .values {
+            flex-direction: column;
+
+            .value {
+                flex: 1 1 calc(33.333% - 20px);
+                padding: 20px;
+                border-radius: 10px;
+                width: 100%;
+
+                img {
+                    width: 200px;
+                    height: 200px;
+                    margin-bottom: 15px;
+                    border-radius: 8px;
+                }
+
+                h3 {
+                    font-size: 1.75rem;
+                    color: $primary-color;
+                    margin-bottom: 10px;
+                    letter-spacing: 1px;
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: 1.25rem;
+                    letter-spacing: 2px;
+                    color: $muted-color;
+                    line-height: 1.5;
+                    text-align: left;
+                    padding: 0 5%;
+                }
+            }
+        }
+    }
+
+    .footer {
+        padding: 1rem;
+        .footerContentGroup {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1%;
+            .footerContent1 {
+                width: 100%;
+                justify-content: center;
+                .logo {
+                    height: 80px;
+                    transform: translateY(-1%);
+                }
+                .logoText {
+                    h1 {
+                        display: flex;
+                        flex-direction: column;
+
+                        font-size: 1.5rem;
+                        letter-spacing: 0.4px;
+
+                        span {
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+            }
+            .footerContent2 {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-left: 18%;
+                .contentItem {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    white-space: nowrap;
+
+                    padding: 0.5rem 0;
+                    .iconGroup {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        img {
+                            width: 24px;
+                        }
+                    }
+                    h4 {
+                        margin-left: 0.5rem;
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+            .footerContent3 {
+                width: 100%;
+                font-size: 2rem;
+                text-align: center;
+                margin-top: 0rem;
+                &::before {
+                }
+                .slogan {
+                    display: none;
+                }
+                .footerBtnGroup {
+                    margin-top: 1rem;
+                    display: none;
+
+                    .menuBtn {
+                        &:hover {
+                        }
+                    }
+                    .MenuTriger {
+                    }
+                }
+                .fansGroup {
+                    margin: 0.75rem 6% 0;
+
+                    img {
+                        width: 32px;
+                    }
+                }
+            }
+        }
+        .copyRight {
+            text-align: center;
+            margin-top: 1rem;
         }
     }
 }

@@ -1,258 +1,391 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>關於我們 - 奧特曼能源有限公司</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>關於我們-奧特曼能源有限公司</title>
+
+    <!-- 字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/all.css">
     <style>
-        body {
+        /* 全域重置 */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Bebas Neue', sans-serif;
-            background: url('/imgs/high-quality-bg.jpg') no-repeat center center fixed;
-            background-size: cover;
             color: #fff;
+            background: url('/imgs/indexBanner3.jpg') no-repeat center center fixed;
+            background-size: cover;
             overflow-x: hidden;
         }
 
+        /* Hero 區塊：固定全螢幕，作為進場頁 */
         .hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            padding: 6rem 2rem;
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            color: #ffcc00;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .hero p {
-            font-size: 1.8rem;
-            max-width: 800px;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .hero button {
-            padding: 1rem 3rem;
-            font-size: 1.5rem;
-            color: #fff;
-            background: linear-gradient(45deg, #ff8d20, #ff3d00);
-            border: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hero button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .about-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 4rem 10%;
-            background: #f8f9fa;
-            color: #333;
-        }
-
-        .about-section img {
-            width: 50%;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .about-section .content {
-            max-width: 50%;
-            padding: 2rem;
-        }
-
-        .about-section h2 {
-            font-size: 3rem;
-            color: #ff8d20;
-            margin-bottom: 1rem;
-        }
-
-        .about-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-section button {
-            font-size: 1.2rem;
-            color: #fff;
-            background: linear-gradient(45deg, #ff8d20, #ff3d00);
-            border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .about-section button:hover {
-            background: linear-gradient(45deg, #ff3d00, #ff8d20);
-        }
-
-        .services {
-            padding: 4rem 10%;
-            background: #fffcf6;
-            text-align: center;
-        }
-
-        .services h2 {
-            font-size: 3rem;
-            color: #ff8d20;
-            margin-bottom: 2rem;
-        }
-
-        .services .cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        .card {
-            flex: 1 1 calc(33.333% - 2rem);
-            min-width: 280px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .card img {
+            position: fixed;
+            /* 固定在視窗頂層 */
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card h3 {
-            font-size: 1.8rem;
-            color: #333;
-            margin: 1rem 0;
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: #666;
-            margin: 0 1rem 1.5rem;
-        }
-
-        .cta {
-            padding: 4rem 2rem;
-            background: linear-gradient(45deg, #ff8d20, #ff3d00);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            color: #fff;
+            z-index: 9999;
+            /* 保持在最上層 */
         }
 
-        .cta h2 {
+        /* Hero 區塊的暗色遮罩，可控制透明度 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 1);
+            z-index: 1;
+        }
+
+        /* Hero 文字內容 */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: #ff7a00;
+            text-shadow: 0 0 20px rgba(255, 122, 0, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* 2 秒後上拉淡出動畫 (fadeOutUp) */
+        .fade-out-up {
+            animation: fadeOutUp 1s forwards;
+            /* 動畫持續 1 秒，結束後固定到終點 */
+        }
+
+        @keyframes fadeOutUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+        }
+
+        /* About 區塊 */
+        .section {
+            position: relative;
+            width: 100%;
+            padding: 60px 0;
+            /* 可視需要調整背景或不加半透明底色 */
+            background-color: rgba(0, 0, 0, 0.5);
+            min-height: 100vh;
+            padding-top: 120px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 30px;
+            color: #ff7a00;
+            text-shadow: 0 0 10px rgba(255, 122, 0, 0.7);
+            letter-spacing: 10px;
         }
 
-        .cta p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
+        .section-content {
+            font-size: 1.75rem;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: justify;
+            padding: 0 20px;
+            color: #eee;
+            letter-spacing: 2wpx;
 
-        .cta button {
-            font-size: 1.5rem;
-            padding: 1rem 3rem;
-            background: #fff;
-            color: #ff3d00;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .cta button:hover {
-            background: #ff3d00;
-            color: #fff;
-        }
-
-        @media screen and (max-width: 992px) {
-            .about-section {
-                flex-direction: column;
+            .special {
+                text-align: center;
+                /* 文字置中 */
+                font-size: 2rem;
+                /* 調整字體大小 */
+                letter-spacing: 2px;
+                /* 適度字距 */
+                color: #ffd21d;
+                /* 使用主題色 */
+                font-weight: bold;
+                /* 加粗字體 */
+                text-shadow: 0 0 10px rgba(228, 205, 30, .7);
+                /* 增加輕微光暈 */
+                margin: 40px auto;
+                /* 增加與上下內容的距離 */
+                position: relative;
+                /* 為上下線條設置定位基準 */
+                letter-spacing: 10px;
             }
 
-            .about-section img,
-            .about-section .content {
-                max-width: 100%;
-                width: 100%;
+            .special::before,
+            .special::after {
+                content: '';
+                /* 創建虛擬線條 */
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background-color: rgba(255, 255, 255, .3);
             }
+
+            .special::before {
+                top: -20px;
+                /* 線條置於文字上方 */
+            }
+
+            .special::after {
+                bottom: -20px;
+                /* 線條置於文字下方 */
+            }
+
+
+
+
         }
 
-        @media screen and (max-width: 768px) {
-            .card {
-                flex: 1 1 100%;
+        /* 響應式 (RWD) 設定 */
+        @media (max-width: 576px) {
+            .section {
+                padding: 0;
+                padding-top: 80px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.25rem;
+            }
+
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-content {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                margin: 0;
+                padding: 0;
+                margin-bottom: .5rem;
+            }
+
+            .section-content .special {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="hero">
-        <h1>奧特曼能源有限公司</h1>
-        <p>我們致力於透過太陽能技術，將您的屋頂轉變為穩定收益的金礦。</p>
-        <button>立即諮詢</button>
+    <!-- 進場 Hero 區（開幕式）-->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <h1>打造綠能未來</h1>
+            <p>我們致力於為您提供最優質的太陽能解決方案，創造永續發展的綠色世界。</p>
+        </div>
+    </header>
+
+    <div class="navbar">
+        <a href="/" class="logoBox">
+            <img class="logo" src="/imgs/logo.png" alt="">
+            <div class="logoText">
+                <h1>奧特曼能源有限公司
+                </h1>
+                <h2>
+                    <div class="logoLightText">A</div>
+                    <div class="logoLightText">u</div>
+                    <div class="logoLightText">t</div>
+                    <div class="logoLightText">o</div>
+                    <div class="logoLightText">M</div>
+                    <div class="logoLightText">a</div>
+                    <div class="logoLightText">n</div>
+                </h2>
+            </div>
+        </a>
+        <div class="menuBox">
+            <a href="/about.html" class="menuBtn">關於我們</a>
+            <a href="/service.html" class="menuBtn">服務項目</a>
+        </div>
+    </div>
+    <div class="myNewNav">
+        <!-- 右上方的「三條線」漢堡按鈕 -->
+        <div class="myHamburger" id="myHamburgerBtn">
+            <span class="myLine"></span>
+            <span class="myLine"></span>
+            <span class="myLine"></span>
+        </div>
+
+        <!-- 滿版覆蓋的選單區塊（預設隱藏，點擊時淡入） -->
+        <nav class="myMenuBox" id="myMenuBox">
+            <!-- 你可以在這裡放置選單連結，或其他想呈現的內容 -->
+            <div class="myMenuContent">
+                <ul>
+                    <li><a href="/">首頁</a></li>
+                    <li><a href="/about.html">關於我們</a></li>
+                    <li><a href="/service.html">服務項目</a></li>
+
+                </ul>
+
+            </div>
+            <div class="contactEmail">
+                <img src="imgs/email.png" alt=""> aotoman888@gmail.com
+            </div>
+        </nav>
     </div>
 
-    <div class="about-section">
-        <img src="/imgs/about.jpg" alt="關於我們">
-        <div class="content">
-            <h2>關於我們</h2>
-            <p>奧特曼能源有限公司是一家專注於太陽能技術與創新的公司。我們提供屋頂出租、自費建置、以及購買電廠等多樣化的服務，幫助客戶實現能源獨立，並創造穩定的被動收入。</p>
-            <button>了解更多</button>
+    <!-- 關於我們 區域 -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">關於我們</h2>
+            <div class="section-content">
+                <p>
+                    奧特曼能源科技有限公司成立於2023年，服務處位於台灣高雄，致力於再生能源的發展與推廣。作為環保與綠能技術的先行者，我們以專業的技術和創新精神，為居家與工業用戶提供高效、可持續的再生能源解決方案。
+                </p>
+                <p>
+                    我們專注於工業廠房與農業設施的屋頂型再生能源系統，同時涵蓋居家屋頂太陽能與大型工廠屋頂系統，致力於滿足不同客戶的多元需求，並實現能源效益的最大化。過去，我們主要以地面型案場為主，未來將重心轉向屋頂能源系統的開發與應用，讓綠能更深入您的日常生活與工作環境。
+                </p>
+                <p>
+                    秉持「環保、創新、永續」的理念，我們的團隊以客戶需求為核心，提供專業的設計、施工與維護服務，致力於成為台灣再生能源市場的領導者，為地球的永續發展貢獻一份力量
+                </p>
+                <p class="special">
+                    綠能未來，由奧特曼能源為您點亮
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="footerContentGroup">
+            <div class="footerContent1">
+                <img class="logo" src="/imgs/logo.png" alt="">
+                <div class="logoText">
+                    <h1>奧特曼能源有限公司
+                        <span>
+                            AutoMan
+                        </span>
+                    </h1>
+                </div>
+            </div>
+            <div class="footerContent2">
+
+                <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/email.png" alt=""> 信箱 :
+                    </div>
+                    <h4>aotoman888@gmail.com</h4>
+                </div>
+                <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/phone.png" alt=""> 電話 :
+                    </div>
+                    <h4>09xxxxxxxx</h4>
+                </div>
+                <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/location.png" alt=""> 地址 :
+                    </div>
+                    <h4>高雄市xxxxxxxxxxxxx</h4>
+                </div>
+                <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/clock.png" alt=""> 時間 :
+                    </div>
+                    <h4>9:00~20:00</h4>
+                </div>
+
+
+            </div>
+
+            <div class="footerContent3">
+                <div class="slogan">
+                    留給下一代一個更安全乾淨的居住環境
+                </div>
+                <div class="footerBtnGroup">
+                    <a href="/" class="menuBtn">返回首頁</a>
+                    <a href="/about.html" class="menuBtn">關於我們</a>
+                    <a href="/service.html" class="menuBtn">服務項目</a>
+                    <!-- <button class="MenuTriger">Menu</button> -->
+                </div>
+                <div class="fansGroup">
+                    <a href="" target="_blank"><img src="imgs/line.png" alt=""></a>
+                    <a href="" target="_blank"><img src="imgs/facebook.png" alt=""></a>
+                    <a href="" target="_blank"><img src="imgs/instagram.png" alt=""></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyRight">
+            © 2024 奧特曼能源有限公司 All rights reserved.
         </div>
     </div>
 
-    <div class="services">
-        <h2>我們的服務</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="/imgs/service1.jpg" alt="屋頂出租">
-                <h3>屋頂出租</h3>
-                <p>讓您的閒置屋頂創造價值，享受零風險的穩定收益。</p>
-            </div>
-            <div class="card">
-                <img src="/imgs/service2.jpg" alt="自費建置">
-                <h3>自費建置</h3>
-                <p>高效能太陽能建置方案，助您實現能源自給自足。</p>
-            </div>
-            <div class="card">
-                <img src="/imgs/service3.jpg" alt="購買電廠">
-                <h3>購買電廠</h3>
-                <p>投資未來，讓太陽能電廠成為您穩定收益的來源。</p>
-            </div>
-        </div>
-    </div>
+    <!-- 簡易 JavaScript：2 秒後，Hero 區淡出上移消失 -->
+    <script>
+        const myHamburgerBtn = document.getElementById("myHamburgerBtn");
+        const myMenuBox = document.getElementById("myMenuBox");
 
-    <div class="cta">
-        <h2>現在就加入我們的行列！</h2>
-        <p>與奧特曼能源一起開創綠能的未來，享受穩定收益與環保雙贏。</p>
-        <button>立即聯絡</button>
-    </div>
+        myHamburgerBtn.addEventListener("click", () => {
+            // 切換自己 (三條線→X)
+            myHamburgerBtn.classList.toggle("active");
+            // 切換選單 (.myMenuBox 滑進/滑出)
+            myMenuBox.classList.toggle("active");
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const hero = document.getElementById('hero');
+            const now = new Date().getTime();
+            const lastShownTime = localStorage.getItem('heroLastShown');
+
+            // 如果距離上次顯示已超過5分鐘，或是從未顯示過，則顯示 Hero 區
+            if (!lastShownTime || now - lastShownTime > 5 * 60 * 1000) {
+                setTimeout(function () {
+                    hero.classList.add('fade-out-up');
+                    // 儲存當前時間
+                    localStorage.setItem('heroLastShown', now);
+                }, 1000);
+            } else {
+                // 立即隱藏 Hero 區
+                hero.style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
+
 </html>
