@@ -822,6 +822,9 @@ img {
                 background-image: none;
                 appearance: none;
                 border: none;
+                appearance: none; /* 移除原生樣式 */
+                background-color: transparent; /* 讓背景透明 */
+                color: #000;
             }
 
             textarea {

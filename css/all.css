@@ -775,6 +775,9 @@ img {
      -moz-appearance: none;
           appearance: none;
   border: none;
+  appearance: none; /* 移除原生樣式 */
+  background-color: transparent; /* 讓背景透明 */
+  color: #000;
 }
 .formBox .main .inputGroup textarea {
   width: 100%;
