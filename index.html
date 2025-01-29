@@ -457,7 +457,8 @@
 
         </div>
         <div class="videoGroup">
-            <video src="./video/video1.mp4" autoplay loop muted></video>
+            <video src="./video/video1.mp4" autoplay loop muted playsinline></video>
+
         </div>
     </div>
 
@@ -1199,6 +1200,9 @@
     }
 
     @media screen and (max-width: 576px) {
+        .indexSwiper{
+            height: 88vh;
+        }
         .indexSwiper .textGroup {
 
             position: absolute;

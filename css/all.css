@@ -464,6 +464,7 @@ img {
   justify-content: center;
   align-items: center;
   overflow: hidden; /* 確保影片比例適當時，超出部分會被隱藏 */
+  pointer-events: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .aboutUs .videoGroup video {
