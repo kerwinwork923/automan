@@ -21,17 +21,16 @@
         </div>
     </div> -->
 
+    <!-- 音樂元素 -->
     <audio id="backgroundMusic" autoplay loop>
         <source src="mp3/bgMusic.mp3" type="audio/mpeg">
-        您的瀏覽器不支持音頻元素。
+        您的瀏覽器不支援音頻元素。
     </audio>
 
     <!-- 音樂控制按鈕 -->
     <div class="music-controls">
-
+        <!-- 預設顯示音樂開啟圖示 -->
         <img id="toggleMute" src="imgs/musicOpen.png" alt="音樂開啟">
-
-
     </div>
 
     <div class="loading-screen" id="loadingScreen">
@@ -313,7 +312,6 @@
                     <li><a href="/">首頁</a></li>
                     <li><a href="/about.html">關於我們</a></li>
                     <li><a href="/service.html">服務項目</a></li>
-
                 </ul>
 
             </div>
@@ -890,50 +888,64 @@
         element.style.setProperty('--delay', `${index * 0.2}s`);
     });
 
-    const toggleMute = document.querySelector("#toggleMute")
-    const backgroundMusic = document.querySelector('#backgroundMusic');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const toggleMute = document.getElementById('toggleMute');
 
+    // 1. 檢查上一頁或之前的記錄，先還原上次儲存的進度
+    window.addEventListener('DOMContentLoaded', () => {
+        // 取得是否手動暫停的紀錄 (true / false)
+        const musicPaused = localStorage.getItem('musicPaused') === 'true';
 
-    function isPlaying(audio) {
-        return !audio.paused;
-    }
+        // 取得儲存在 localStorage 的播放時間 (預設0)
+        const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+        backgroundMusic.currentTime = savedTime;
 
+        // 如果先前並沒有手動暫停，就嘗試自動播放
+        if (!musicPaused) {
+            // 注意：若瀏覽器策略阻擋，可能仍需要使用者點擊才能播放
+            backgroundMusic.play().catch(err => {
+                console.log("自動播放被瀏覽器阻擋：", err);
+            });
+        }
+
+        // 根據 paused 狀態，更新按鈕圖示
+        updateMusicIcon(!musicPaused);
+    });
+
+    // 2. 按下按鈕，切換播放或暫停
     toggleMute.addEventListener("click", function () {
-
-        if (isPlaying(backgroundMusic)) {
+        // 如果目前正在播放 -> 就暫停
+        if (!backgroundMusic.paused) {
             backgroundMusic.pause();
-            toggleMute.src = 'imgs/musicClose.png';
-            toggleMute.alt = '音樂關閉';
+            localStorage.setItem('musicPaused', 'true'); // 記錄「已手動暫停」
+            updateMusicIcon(false);
         } else {
-            backgroundMusic.play();
+            // 若目前是暫停 -> 播放
+            backgroundMusic.play().catch(err => {
+                console.log("播放時發生錯誤：", err);
+            });
+            localStorage.setItem('musicPaused', 'false'); // 記錄「手動播放」
+            updateMusicIcon(true);
+        }
+    });
+
+    // 3. 播放時間改變時，就把最新進度存起來
+    backgroundMusic.addEventListener('timeupdate', function () {
+        localStorage.setItem('musicTime', backgroundMusic.currentTime);
+    });
+
+    // 4. 提供一個更新icon的小函式
+    function updateMusicIcon(isPlaying) {
+        // isPlaying = true -> 音樂Open圖示
+        if (isPlaying) {
             toggleMute.src = 'imgs/musicOpen.png';
             toggleMute.alt = '音樂開啟';
+        } else {
+            // isPlaying = false -> 音樂Close圖示
+            toggleMute.src = 'imgs/musicClose.png';
+            toggleMute.alt = '音樂關閉';
         }
-    }, false)
-    // //
-    // document.addEventListener("DOMContentLoaded", () => {
-    //     const stepItems = document.querySelectorAll(".stepItem img");
-    //     let currentIndex = 0;
-
-    //     function updateActiveImage() {
-    //         // 移除所有图片的 active 类名
-    //         stepItems.forEach((img) => img.classList.remove("active"));
-
-    //         // 给当前图片添加 active 类名
-    //         stepItems[currentIndex].classList.add("active");
-
-    //         // 更新索引，确保循环播放
-    //         currentIndex = (currentIndex + 1) % stepItems.length;
-    //     }
-
-    //     // 初始化第一个图片为 active
-    //     updateActiveImage();
-
-    //     // 每2秒更新一次图片
-    //     setInterval(updateActiveImage, 3000);
-    // });
-
-
+    }
 
 
 </script>
@@ -1180,7 +1192,7 @@
         }
 
         .slideSubText {
-           
+
             bottom: 47.5px;
             left: 50%;
             font-size: 2rem;
@@ -1200,9 +1212,10 @@
     }
 
     @media screen and (max-width: 576px) {
-        .indexSwiper{
+        .indexSwiper {
             height: 88vh;
         }
+
         .indexSwiper .textGroup {
 
             position: absolute;
@@ -1234,13 +1247,13 @@
 
 
         .slideSubText {
-           
-           bottom: 47.5px;
-           left: 50%;
-           font-size: 1.75rem;
-           letter-spacing: 12px;
-           white-space: nowrap;
-       }
+
+            bottom: 47.5px;
+            left: 50%;
+            font-size: 1.75rem;
+            letter-spacing: 12px;
+            white-space: nowrap;
+        }
 
         .indexSwiper h3 {
             font-size: 1rem;
@@ -1291,6 +1304,10 @@
     .indexSwiper .lightText {
         z-index: 9;
 
+    }
+    .swiper-pagination-bullet{
+        width: 1.75rem;
+        height: 8px;
     }
 </style>
 

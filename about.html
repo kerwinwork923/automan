@@ -179,7 +179,8 @@
         @media (max-width: 576px) {
             .section {
                 padding: 0;
-                padding-top: 80px;
+                padding-top: 6.5rem;
+                
             }
 
             .hero-content h1 {
@@ -192,7 +193,7 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
 
             .section-content {
@@ -203,6 +204,7 @@
                 margin: 0;
                 padding: 0;
                 margin-bottom: .5rem;
+                
             }
 
             .section-content .special {
@@ -220,6 +222,8 @@
             <p>我們致力於為您提供最優質的太陽能解決方案，創造永續發展的綠色世界。</p>
         </div>
     </header>
+
+
 
     <div class="navbar">
         <a href="/" class="logoBox">
@@ -268,6 +272,18 @@
             </div>
         </nav>
     </div>
+
+    <div class="music-controls">
+
+        <img id="toggleMute" src="imgs/musicOpen.png" alt="音樂開啟">
+
+
+    </div>
+
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="mp3/bgMusic.mp3" type="audio/mpeg">
+        您的瀏覽器不支持音頻元素。
+    </audio>
 
     <!-- 關於我們 區域 -->
     <section class="section" id="about">
@@ -360,6 +376,64 @@
     <script>
         const myHamburgerBtn = document.getElementById("myHamburgerBtn");
         const myMenuBox = document.getElementById("myMenuBox");
+        const backgroundMusic = document.getElementById('backgroundMusic');
+    const toggleMute = document.getElementById('toggleMute');
+
+    // 1. 檢查上一頁或之前的記錄，先還原上次儲存的進度
+    window.addEventListener('DOMContentLoaded', () => {
+        // 取得是否手動暫停的紀錄 (true / false)
+        const musicPaused = localStorage.getItem('musicPaused') === 'true';
+
+        // 取得儲存在 localStorage 的播放時間 (預設0)
+        const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+        backgroundMusic.currentTime = savedTime;
+
+        // 如果先前並沒有手動暫停，就嘗試自動播放
+        if (!musicPaused) {
+            // 注意：若瀏覽器策略阻擋，可能仍需要使用者點擊才能播放
+            backgroundMusic.play().catch(err => {
+                console.log("自動播放被瀏覽器阻擋：", err);
+            });
+        }
+
+        // 根據 paused 狀態，更新按鈕圖示
+        updateMusicIcon(!musicPaused);
+    });
+
+    // 2. 按下按鈕，切換播放或暫停
+    toggleMute.addEventListener("click", function () {
+        // 如果目前正在播放 -> 就暫停
+        if (!backgroundMusic.paused) {
+            backgroundMusic.pause();
+            localStorage.setItem('musicPaused', 'true'); // 記錄「已手動暫停」
+            updateMusicIcon(false);
+        } else {
+            // 若目前是暫停 -> 播放
+            backgroundMusic.play().catch(err => {
+                console.log("播放時發生錯誤：", err);
+            });
+            localStorage.setItem('musicPaused', 'false'); // 記錄「手動播放」
+            updateMusicIcon(true);
+        }
+    });
+
+    // 3. 播放時間改變時，就把最新進度存起來
+    backgroundMusic.addEventListener('timeupdate', function () {
+        localStorage.setItem('musicTime', backgroundMusic.currentTime);
+    });
+
+    // 4. 提供一個更新icon的小函式
+    function updateMusicIcon(isPlaying) {
+        // isPlaying = true -> 音樂Open圖示
+        if (isPlaying) {
+            toggleMute.src = 'imgs/musicOpen.png';
+            toggleMute.alt = '音樂開啟';
+        } else {
+            // isPlaying = false -> 音樂Close圖示
+            toggleMute.src = 'imgs/musicClose.png';
+            toggleMute.alt = '音樂關閉';
+        }
+    }
 
         myHamburgerBtn.addEventListener("click", () => {
             // 切換自己 (三條線→X)
@@ -378,7 +452,7 @@
                     hero.classList.add('fade-out-up');
                     // 儲存當前時間
                     localStorage.setItem('heroLastShown', now);
-                }, 1000);
+                }, 2000);
             } else {
                 // 立即隱藏 Hero 區
                 hero.style.display = 'none';

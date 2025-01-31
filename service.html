@@ -61,6 +61,18 @@
             </div>
         </nav>
     </div>
+      <!-- 音樂元素 -->
+      <audio id="backgroundMusic" autoplay loop>
+        <source src="mp3/bgMusic.mp3" type="audio/mpeg">
+        您的瀏覽器不支援音頻元素。
+    </audio>
+
+    <!-- 音樂控制按鈕 -->
+    <div class="music-controls">
+        <!-- 預設顯示音樂開啟圖示 -->
+        <img id="toggleMute" src="imgs/musicOpen.png" alt="音樂開啟">
+    </div>
+
     <!-- 服務項目區塊 -->
     <section class="section service-section" id="service">
         <div class="container">
@@ -290,6 +302,10 @@
         .service-card-content h3 {
             font-size: 1.5rem;
         }
+        .section-title{
+            font-size: 2.25rem;
+            margin-top: 2.5rem;
+        }
     }
 </style>
 
@@ -304,4 +320,63 @@
         // 切換選單 (.myMenuBox 滑進/滑出)
         myMenuBox.classList.toggle("active");
     });
+
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const toggleMute = document.getElementById('toggleMute');
+
+    // 1. 檢查上一頁或之前的記錄，先還原上次儲存的進度
+    window.addEventListener('DOMContentLoaded', () => {
+        // 取得是否手動暫停的紀錄 (true / false)
+        const musicPaused = localStorage.getItem('musicPaused') === 'true';
+
+        // 取得儲存在 localStorage 的播放時間 (預設0)
+        const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+        backgroundMusic.currentTime = savedTime;
+
+        // 如果先前並沒有手動暫停，就嘗試自動播放
+        if (!musicPaused) {
+            // 注意：若瀏覽器策略阻擋，可能仍需要使用者點擊才能播放
+            backgroundMusic.play().catch(err => {
+                console.log("自動播放被瀏覽器阻擋：", err);
+            });
+        }
+
+        // 根據 paused 狀態，更新按鈕圖示
+        updateMusicIcon(!musicPaused);
+    });
+
+    // 2. 按下按鈕，切換播放或暫停
+    toggleMute.addEventListener("click", function () {
+        // 如果目前正在播放 -> 就暫停
+        if (!backgroundMusic.paused) {
+            backgroundMusic.pause();
+            localStorage.setItem('musicPaused', 'true'); // 記錄「已手動暫停」
+            updateMusicIcon(false);
+        } else {
+            // 若目前是暫停 -> 播放
+            backgroundMusic.play().catch(err => {
+                console.log("播放時發生錯誤：", err);
+            });
+            localStorage.setItem('musicPaused', 'false'); // 記錄「手動播放」
+            updateMusicIcon(true);
+        }
+    });
+
+    // 3. 播放時間改變時，就把最新進度存起來
+    backgroundMusic.addEventListener('timeupdate', function () {
+        localStorage.setItem('musicTime', backgroundMusic.currentTime);
+    });
+
+    // 4. 提供一個更新icon的小函式
+    function updateMusicIcon(isPlaying) {
+        // isPlaying = true -> 音樂Open圖示
+        if (isPlaying) {
+            toggleMute.src = 'imgs/musicOpen.png';
+            toggleMute.alt = '音樂開啟';
+        } else {
+            // isPlaying = false -> 音樂Close圖示
+            toggleMute.src = 'imgs/musicClose.png';
+            toggleMute.alt = '音樂關閉';
+        }
+    }
 </script>
