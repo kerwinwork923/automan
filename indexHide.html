@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 網站標題（已有） -->
+    <title>奧特曼能源科技有限公司｜太陽能屋頂出租、自費建置與綠能投資</title>
+
+    <!-- 描述：搜尋結果會顯示 -->
+    <meta name="description" content="奧特曼能源科技有限公司提供屋頂出租、自費建置與太陽能電廠投資等專業綠能解決方案，打造穩定收益、節能降溫的未來。">
+
+    <!-- 關鍵字（可選，但不太影響排名） -->
+    <meta name="keywords" content="太陽能, 屋頂出租, 綠能投資, 太陽能建置, 奧特曼能源, 台電合約, 太陽能電廠, 可再生能源">
+
+    <!-- 作者 -->
+    <meta name="author" content="奧特曼能源科技有限公司">
+
+    <!-- 社群分享標籤（Open Graph for Facebook / LinkedIn） -->
+    <meta property="og:title" content="奧特曼能源科技有限公司｜太陽能屋頂出租、自費建置與綠能投資">
+    <meta property="og:description" content="屋頂不用可出租、自費建置電廠也可獲利，加入綠能行列，與奧特曼一起創造永續未來。">
+    <meta property="og:image" content="https://automan777.netlify.app/imgs/logo.png">
+    <meta property="og:url" content="https://automan777.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="奧特曼能源科技有限公司｜太陽能屋頂出租、自費建置與綠能投資">
+    <meta name="twitter:description" content="太陽能投資新選擇，立即了解屋頂出租與自建電廠的高回報方案。">
+    <meta name="twitter:image" content="https://automan777.netlify.app/imgs/logo.png">
+
+    <!-- Canonical URL（避免重複內容問題） -->
+    <link rel="canonical" href="https://automan777.netlify.app/" />
+
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" href="/imgs/logo.png" type`="image/x-icon">
+</head>
+
+<body>
+    <!-- <div class="neonGroup">
+        <div class="neonText">
+            陽光花園
+        </div>
+    </div> -->
+
+    <!-- 音樂元素 -->
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="mp3/bgMusic.mp3" type="audio/mpeg">
+        您的瀏覽器不支援音頻元素。
+    </audio>
+
+    <!-- 音樂控制按鈕 -->
+    <div class="music-controls">
+        <!-- 預設顯示音樂開啟圖示 -->
+        <img id="toggleMute" src="imgs/musicOpen.png" alt="音樂開啟">
+    </div>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner-container">
+            <div class="sun"></div>
+        </div>
+        <div class="loading-text">
+            AUTOMAN
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">0%</div>
+    </div>
+
+    <div class="hamburBox">
+
+    </div>
+    <div class="cover"></div>
+    <div class="formBox">
+        <div class="close">
+            <img src="imgs/close.png" alt="">
+        </div>
+        <div class="support">
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5717.008962048873!2d120.30036000781276!3d22.627211005163637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e04895cfb44d7%3A0x1f2f8775d61795a3!2z576O6bqX5bO256uZ!5e0!3m2!1szh-TW!2stw!4v1729950704674!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            <img src="imgs/formImg.jpg" alt="">
+            <div class="contactGroup">
+                <div class="contactEmail">
+                    <img src="imgs/email.png" alt=""> aotoman888@gmail.com
+                </div>
+
+            </div>
+        </div>
+        <div class="main">
+            <h3>自費評估表單</h3>
+            <div class="btnList">
+                <button class="btnActive" id="formBtn1">屋頂出租</button>
+                <button id="formBtn2">自費建置</button>
+                <button id="formBtn3">購買電廠</button>
+            </div>
+            <div class="form form1" id="form1">
+                <div class="inputGroup">
+                    <label for="name1">姓名：</label>
+                    <input type="text" id="name1" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="tel1">電話：</label>
+                    <input type="tel" id="tel1" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="buildingAddress1">完整建築地址：</label>
+                    <input type="text" id="buildingAddress1" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="legalBuildingAddress1">合法建物類型：</label>
+                    <select name="legalBuildingAddress1" id="legalBuildingAddress1">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="透天">透天</option>
+                        <option value="廠房">廠房</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="houseAge1">屋齡：</label>
+                    <select name="houseAge1" id="houseAge1">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="1-10">1-10年</option>
+                        <option value="11-20">11-20年</option>
+                        <option value="21-30">21-30年</option>
+                        <option value="31-40">31-40年</option>
+                        <option value="41up">41年以上</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="email1">Email：</label>
+                    <input type="email" id="email1" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="NORSM1">屋頂坪數：</label>
+                    <select name="NORSM1" id="NORSM1">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="15-40">15-40坪</option>
+                        <option value="41-100">41-100坪</option>
+                        <option value="101-500">101-500坪</option>
+                        <option value="500up">500坪以上</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="NOB1">總樓數：</label>
+                    <select name="NOB1" id="NOB1">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="1">1樓</option>
+                        <option value="2">2樓</option>
+                        <option value="3">3樓</option>
+                        <option value="4">4樓</option>
+                        <option value="5">5樓</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="remark1">備註：</label>
+                    <textarea name="remark1" rows="5" id="remark1"></textarea>
+                </div>
+
+                <button class="submitBtn" id="submitBtn1">確認送出</button>
+            </div>
+
+
+            <div class="form form2" id="form2">
+
+                <div class="inputGroup">
+                    <label for="name2">姓名：</label>
+                    <input type="text" id="name2" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="tel2">電話：</label>
+                    <input type="tel" id="tel2" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="buildingAddress2">完整建築地址：</label>
+                    <input type="text" id="buildingAddress2" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="legalBuildingAddress2">合法建物類型：</label>
+                    <select name="legalBuildingAddress2" id="legalBuildingAddress2">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="透天">透天</option>
+                        <option value="廠房">廠房</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="houseAge2">屋齡：</label>
+                    <select name="houseAge2" id="houseAge2">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="1-10">1-10年</option>
+                        <option value="11-20">11-20年</option>
+                        <option value="21-30">21-30年</option>
+                        <option value="31-40">31-40年</option>
+                        <option value="41up">41年以上</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="email2">Email：</label>
+                    <input type="email" id="email2" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="NORSM2">屋頂坪數：</label>
+                    <select name="NORSM2" id="NORSM2">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="15-40">15-40坪</option>
+                        <option value="41-100">41-100坪</option>
+                        <option value="101-500">101-500坪</option>
+                        <option value="500up">500坪以上</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="NOB2">總樓數：</label>
+                    <select name="NOB2" id="NOB2">
+                        <option value="" selected disabled>請選擇</option>
+                        <option value="1">1樓</option>
+                        <option value="2">2樓</option>
+                        <option value="3">3樓</option>
+                        <option value="4">4樓</option>
+                        <option value="5">5樓</option>
+                    </select>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="remark2">備註：</label>
+                    <textarea name="remark2" rows="5" id="remark2"></textarea>
+                </div>
+
+                <button class="submitBtn" id="submitBtn2">確認送出</button>
+            </div>
+
+
+            <div class="form form3" id="form3">
+
+                <div class="inputGroup">
+                    <label for="name3">姓名：</label>
+                    <input type="text" id="name3" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="tel3">電話：</label>
+                    <input type="tel" id="tel3" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="company3">公司名稱：</label>
+                    <input type="text" id="company3" value="">
+                </div>
+
+                <div class="inputGroup ">
+                    <label for="investPower">有投資電廠經驗?</label>
+                    <div class="radioWrap">
+                        <div class="radioGroup">
+                            <label for="investPowerNo">否</label>
+                            <input type="radio" value="否" name="investPower" id="investPowerNo">
+                        </div>
+                        <div class="radioGroup">
+                            <label for="investPowerYes">是</label>
+                            <input type="radio" value="是" name="investPower" id="investPowerYes">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inputGroup">
+                    <label for="email3">Email：</label>
+                    <input type="email" id="email3" value="">
+                </div>
+
+                <div class="inputGroup">
+                    <label for="remark3">備註：</label>
+                    <textarea name="remark3" rows="5" id="remark3"></textarea>
+                </div>
+
+                <button class="submitBtn" id="submitBtn3">確認送出</button>
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+    <div class="navbar">
+        <a href="/" class="logoBox">
+            <img class="logo" src="/imgs/logo.png" alt="">
+            <div class="logoText">
+                <h1>奧特曼能源科技有限公司
+                </h1>
+                <h2>
+                    <div class="logoLightText">A</div>
+                    <div class="logoLightText">u</div>
+                    <div class="logoLightText">t</div>
+                    <div class="logoLightText">o</div>
+                    <div class="logoLightText">M</div>
+                    <div class="logoLightText">a</div>
+                    <div class="logoLightText">n</div>
+                </h2>
+            </div>
+        </a>
+
+        <div class="menuBox">
+            <a href="/about.html" class="menuBtn">關於我們</a>
+            <a href="/service.html" class="menuBtn">服務項目</a>
+        </div>
+    </div>
+
+    <div class="myNewNav">
+        <!-- 右上方的「三條線」漢堡按鈕 -->
+        <div class="myHamburger" id="myHamburgerBtn">
+            <span class="myLine"></span>
+            <span class="myLine"></span>
+            <span class="myLine"></span>
+        </div>
+
+        <!-- 滿版覆蓋的選單區塊（預設隱藏，點擊時淡入） -->
+        <nav class="myMenuBox" id="myMenuBox">
+            <!-- 你可以在這裡放置選單連結，或其他想呈現的內容 -->
+            <div class="myMenuContent">
+                <ul>
+                    <li><a href="/">首頁</a></li>
+                    <li><a href="/about.html">關於我們</a></li>
+                    <li><a href="/service.html">服務項目</a></li>
+                </ul>
+
+            </div>
+            <div class="contactEmail">
+                <img src="imgs/email.png" alt=""> aotoman888@gmail.com
+            </div>
+        </nav>
+    </div>
+
+    <div class="swiper indexSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/a.jpg" />
+                <div class="slideSubText">穩定收益來源</div>
+            </div>
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/b.jpg" />
+                <div class="slideSubText">政府補助支持</div>
+            </div>
+
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/c.jpg" />
+                <div class="slideSubText">節能降溫效果</div>
+            </div>
+
+
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/g.jpg" />
+                <div class="slideSubText">環保節能貢獻</div>
+            </div>
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/h.jpg" />
+                <div class="slideSubText">高投資回報率</div>
+            </div>
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/i.jpg" />
+                <div class="slideSubText">居住品質提升</div>
+            </div>
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/j.jpg" />
+                <div class="slideSubText">低維護長壽命</div>
+            </div>
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/j.jpg" />
+                <div class="slideSubText">房產價值提升</div>
+            </div>
+            <div class="swiper-slide zoom-slide">
+
+                <img src="/imgs/indexBanner/j.jpg" />
+                <div class="slideSubText">參與綠能趨勢</div>
+            </div>
+
+
+            <div class="textGroup">
+                <!-- <h2>AutoMan</h2> -->
+                <div class="buttonGroup">
+                    <button class="consultBtn">立即諮詢</button>
+                </div>
+
+                <!-- <h3>留給下一代一個更安全乾淨的居住環境</h3> -->
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="Advantages">
+        <h3>讓您的屋頂創造價值</h3>
+        <small>透天厝賺大錢！屋頂種電，綠能致富</small>
+        <div class="advGroup">
+            <!-- 台電躉購合約保障 -->
+            <div class="advantage">
+                <img src="./imgs/stamp.png" alt="台電合約保障">
+                <div class="textGroup">
+                    <h3>20年躉購合約保障</h3>
+                    <div class="PGroup">
+                        <p>與台電簽訂躉購合約，長期穩定收益</p>
+                        <p>享受安全投資，未來電價保障</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 延長屋頂壽命 -->
+            <div class="advantage">
+                <img src="./imgs/solar-panel.png" alt="延長屋頂壽命">
+                <div class="textGroup">
+                    <h3>延長屋頂壽命</h3>
+                    <div class="PGroup">
+                        <p>避免屋頂被陽光直射，保護建築結構</p>
+                        <p>延長屋頂壽命，降低維護成本</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 室內降溫效果 -->
+            <div class="advantage">
+                <img src="./imgs/charity.png" alt="室內降溫">
+                <div class="textGroup">
+                    <h3>室內降溫效果</h3>
+                    <div class="PGroup">
+                        <p>室內溫度降低2-4度，節省電費，夏天使用冷氣更省心</p>
+                        <p>太陽能板的設置能有效隔熱，讓室內更加舒適</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 合法空間彈性運用 -->
+            <div class="advantage">
+                <img src="./imgs/permitted.png" alt="彈性運用空間">
+                <div class="textGroup">
+                    <h3>合法空間彈性運用</h3>
+                    <div class="PGroup">
+                        <p>利用合法空間發展太陽能，創造額外收益</p>
+                        <p>有效利用閒置空間，無需額外增建</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="aboutUs">
+        <div class="ourVision">
+            <div class="textGroup">
+                <h3>出租屋頂服務 </h3>
+                <h4>如果您家有閒置不用的屋頂，無任何增建並且擁有合法執照
+                    我您可以考慮把屋頂租給我，當你免費搭建還有租金可收</h4>
+                <button class="consultBtn">立即諮詢</button>
+            </div>
+
+        </div>
+        <div class="videoGroup">
+            <video src="./video/video1.mp4" autoplay loop muted playsinline></video>
+
+        </div>
+    </div>
+
+    <!-- <div class="service">
+        <h3>一站式整合服務流程</h3>
+        <div class="serviceGroup">
+
+
+            <div class="StepGroup">
+                <div class="progressGroup">
+                    <div class="progress"></div>
+                    <div class="progressDot"></div>
+                </div>
+                <div class="stepItem" data-step="1">
+                    <div class="stepNumber">1</div>
+                    <img src="./imgs/service1.jpg" class="stepImg" alt="">
+                    <h4>Business<br>Development</h4>
+                    <h4>案件開發</h4>
+                </div>
+                <div class="stepItem" data-step="2">
+                    <div class="stepNumber">2</div>
+                    <img src="./imgs/service2.png" class="stepImg" alt="">
+                    <h4>DESIGN & PLAN<br></h4>
+                    <h4>設計規劃</h4>
+                </div>
+                <div class="stepItem" data-step="3">
+                    <div class="stepNumber">3</div>
+                    <img src="./imgs/service3.jpg" class="stepImg" alt="">
+                    <h4>Apply Permit</h4>
+                    <h4>申請許可</h4>
+                </div>
+                <div class="stepItem" data-step="4">
+                    <div class="stepNumber">4</div>
+                    <img src="./imgs/service4.jpg" class="stepImg" alt="">
+                    <h4>EPC Service</h4>
+                    <h4>施工監造</h4>
+                </div>
+                <div class="stepItem" data-step="5">
+                    <div class="stepNumber">5</div>
+                    <img src="./imgs/service5.jpg" class="stepImg" alt="">
+                    <h4>Operation<br>Maintain</h4>
+                    <h4>系統維運</h4>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div> -->
+
+
+    <section class="section" id="values">
+        <h2 class="section-title">核心價值</h2>
+        <div class="values">
+            <div class="value">
+                <img src="/imgs/solarBoard.png" alt="Quality">
+                <h3>品質保證</h3>
+                <p>採用最先進的技術與設備，確保每個項目的高效與耐久。</p>
+            </div>
+            <div class="value">
+                <img src="/imgs/hat.png" alt="Innovation">
+                <h3>創新引領</h3>
+                <p>不斷探索新的能源解決方案，為客戶帶來最大的投資回報。</p>
+            </div>
+            <div class="value">
+                <img src="/imgs/handshake.png" alt="Service">
+                <h3>卓越服務</h3>
+                <p>專業團隊全天候提供支持，確保客戶的滿意與信賴。</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class="footer">
+        <div class="footerContentGroup">
+            <div class="footerContent1">
+                <img class="logo" src="/imgs/logo.png" alt="">
+                <div class="logoText">
+                    <h1>奧特曼能源科技有限公司
+                        <span>
+                            AutoMan
+                        </span>
+                    </h1>
+                </div>
+            </div>
+            <div class="footerContent2">
+
+                <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/email.png" alt=""> 信箱 :
+                    </div>
+                    <h4>aotoman888@gmail.com</h4>
+                </div>
+                <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/phone.png" alt=""> 電話 :
+                    </div>
+                    <h4>0938422933</h4>
+                </div>
+                <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/location.png" alt=""> 地址 :
+                    </div>
+                    <h4>高雄市三民區清華街91號10樓</h4>
+                </div>
+                <!-- <div class="contentItem">
+                    <div class="iconGroup">
+                        <img src="imgs/clock.png" alt=""> 時間 :
+                    </div>
+                    <h4>9:00~20:00</h4>
+                </div> -->
+
+
+            </div>
+
+            <div class="footerContent3">
+                <div class="slogan">
+                    留給下一代一個更安全乾淨的居住環境
+                </div>
+                <div class="footerBtnGroup">
+                    <a href="/" class="menuBtn">返回首頁</a>
+                    <a href="/about.html" class="menuBtn">關於我們</a>
+                    <a href="/service.html" class="menuBtn">服務項目</a>
+                    <!-- <button class="MenuTriger">Menu</button> -->
+                </div>
+                <div class="fansGroup">
+                    <a href="" target="_blank"><img src="imgs/line.png" alt=""></a>
+                    <a href="" target="_blank"><img src="imgs/facebook.png" alt=""></a>
+                    <a href="" target="_blank"><img src="imgs/instagram.png" alt=""></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyRight">
+            © 2024 奧特曼能源科技有限公司 All rights reserved.
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".indexSwiper", {
+        effect: "fade", // 使用淡入淡出效果
+        loop: true, // 無限循環
+        autoplay: {
+            delay: 12000, // 每個滑塊停留時間
+            disableOnInteraction: false, // 用戶交互後繼續自動播放
+        },
+        speed: 1000, // 過渡效果持續時間（毫秒）
+        pagination: {
+            el: ".swiper-pagination", // 分頁元素
+            clickable: true, // 可點擊切換
+        },
+        fadeEffect: {
+            crossFade: true, // 啟用淡入淡出
+        },
+        allowTouchMove: false, // 禁止滑動切換（僅自動播放）
+        on: {
+            init: function () {
+                const activeSlide = document.querySelector('.swiper-slide-active');
+                if (activeSlide) {
+                    addZoomEffect(activeSlide);
+                    resetLightTextAnimation(activeSlide);
+                }
+            },
+            slideChangeTransitionEnd: function () {
+                const activeSlide = document.querySelector('.swiper-slide-active');
+                addZoomEffect(activeSlide); // 為當前滑塊添加縮放效果
+                resetLightTextAnimation(activeSlide); // 重置光效動畫
+            },
+            slideChangeTransitionStart: function () {
+                removeZoomEffect(); // 在過渡開始時移除所有縮放效果
+            }
+        }
+    });
+
+    function addZoomEffect(slide) {
+        const img = slide.querySelector('img');
+        if (img) {
+            img.classList.add('zoom-active'); // 正確添加到 img
+        }
+    }
+
+    function removeZoomEffect() {
+        const images = document.querySelectorAll('.swiper-slide img');
+        images.forEach(img => {
+            img.classList.remove('zoom-active'); // 從所有圖片移除
+        });
+    }
+
+    // 重置光效動畫
+    function resetLightTextAnimation(slide) {
+        const lightTextElements = slide.querySelectorAll('.lightText .text');
+        lightTextElements.forEach((element, index) => {
+            element.style.animation = 'none'; // 重置動畫
+            void element.offsetWidth; // 強制重繪
+            element.style.animation = `lightEffect 3s ease-in-out ${index * 1}s`; // 重新啟動動畫
+        });
+    }
+
+
+
+    swiper.on('slideChangeTransitionEnd', () => {
+        const activeSlide = document.querySelector('.swiper-slide-active');
+        resetLightTextAnimation(activeSlide);
+    });
+
+
+
+
+
+
+
+
+
+    //切換表單 
+    const formBox = document.querySelector(".formBox");
+    const cover = document.querySelector(".cover");
+    const formClose = document.querySelector(".formBox .close");
+    const consultBtns = document.querySelectorAll(".consultBtn");
+
+    let inactivityTime;
+    const inactivityDelay = 30000;
+
+    function resetTimer() {
+        clearTimeout(inactivityTime);
+        inactivityTime = setTimeout(openForm, inactivityDelay); // 30秒後顯示表單
+    }
+
+    // 設置活動監聽器
+    window.onload = function () {
+        // 監聽用戶活動
+        window.addEventListener('mousemove', resetTimer, false);
+        window.addEventListener('keydown', resetTimer, false);
+        window.addEventListener('scroll', resetTimer, false);
+        window.addEventListener('click', resetTimer, false);
+
+        // 初始化計時器
+        resetTimer();
+    };
+
+
+    const formBtn1 = document.querySelector('#formBtn1')
+    const formBtn2 = document.querySelector("#formBtn2")
+    const formBtn3 = document.querySelector("#formBtn3")
+
+    const form1 = document.querySelector("#form1")
+    const form2 = document.querySelector("#form2")
+    const form3 = document.querySelector("#form3")
+
+
+
+    if (formBtn1) {
+        formBtn1.addEventListener("click", (e) => {
+            form1.style.display = 'block';
+            form2.style.display = 'none';
+            form3.style.display = 'none';
+            formBtn1.classList.add('btnActive');
+            formBtn2.classList.remove('btnActive');
+            formBtn3.classList.remove('btnActive');
+        }, false)
+    }
+    if (formBtn2) {
+        formBtn2.addEventListener("click", () => {
+            form1.style.display = 'none';
+            form2.style.display = 'block';
+            form3.style.display = 'none';
+
+            formBtn1.classList.remove('btnActive');
+            formBtn2.classList.add('btnActive');
+            formBtn3.classList.remove('btnActive');
+        }, false);
+    }
+
+    if (formBtn3) {
+        formBtn3.addEventListener("click", () => {
+            form1.style.display = 'none';
+            form2.style.display = 'none';
+            form3.style.display = 'block';
+
+            formBtn1.classList.remove('btnActive');
+            formBtn2.classList.remove('btnActive');
+            formBtn3.classList.add('btnActive');
+        }, false);
+    }
+
+    // 打開表單並禁止背景滾動
+    function openForm() {
+        formBox.style.display = "flex"; // 顯示表單
+        cover.style.display = "block"; // 顯示遮罩
+        document.body.classList.add("no-scroll"); // 禁止背景滾動
+    }
+
+    // 關閉表單並恢復背景滾動
+    function closeForm() {
+        formBox.style.display = "none"; // 隱藏表單
+        cover.style.display = "none"; // 隱藏遮罩
+        document.body.classList.remove("no-scroll"); // 恢復背景滾動
+    }
+
+    // 綁定事件：點擊按鈕打開表單
+    consultBtns.forEach((btn) => {
+        btn.addEventListener("click", openForm);
+    });
+
+    // 綁定事件：點擊關閉按鈕或遮罩關閉表單
+    formClose.addEventListener("click", closeForm);
+    cover.addEventListener("click", closeForm);
+
+</script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyB17rgjhiUuG_ei_VAaXJR4qpKjvTWEUSk",
+        authDomain: "automan-773b8.firebaseapp.com",
+        databaseURL: "https://automan-773b8-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "automan-773b8",
+        storageBucket: "automan-773b8.appspot.com",
+        messagingSenderId: "355844871507",
+        appId: "1:355844871507:web:37d3e321405300c0d1fda6",
+        measurementId: "G-NY7354HT8D"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    function validateForm(formData) {
+        const { name, tel, email } = formData;
+        const telPattern = /^\d{10}$/; // 假設電話為10位數字
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!name || !tel || !email) {
+            alert("請填寫所有必填欄位");
+            return false;
+        }
+        if (!telPattern.test(tel)) {
+            alert("請輸入有效的電話號碼");
+            return false;
+        }
+        if (!emailPattern.test(email)) {
+            alert("請輸入有效的 Email");
+            return false;
+        }
+        return true;
+    }
+
+    function submitForm(formData, formType) {
+        if (!validateForm(formData)) return;
+
+        const dbRef = ref(database, formType);
+        formData.timestamp = new Date().toISOString();
+
+        push(dbRef, formData)
+            .then(() => {
+                alert('已送出表單')
+                closeForm()
+            })
+
+            .catch((error) => {
+                console.error('表單提交失敗:', error);
+                closeForm()
+            });
+
+    }
+
+    document.getElementById('submitBtn1').addEventListener('click', (event) => {
+        event.preventDefault();
+        const formData = {
+            name: document.getElementById('name1').value,
+            tel: document.getElementById('tel1').value,
+            buildingAddress: document.getElementById('buildingAddress1').value,
+            legalBuildingAddress: document.getElementById('legalBuildingAddress1').value,
+            houseAge: document.getElementById('houseAge1').value,
+            email: document.getElementById('email1').value,
+            NORSM: document.getElementById('NORSM1').value,
+            NOB: document.getElementById('NOB1').value,
+            remark: document.getElementById('remark1').value,
+        };
+        submitForm(formData, '屋頂出租');
+    });
+
+    document.getElementById('submitBtn2').addEventListener('click', (event) => {
+        event.preventDefault();
+        const formData = {
+            name: document.getElementById('name2').value,
+            tel: document.getElementById('tel2').value,
+            buildingAddress: document.getElementById('buildingAddress2').value,
+            legalBuildingAddress: document.getElementById('legalBuildingAddress2').value,
+            houseAge: document.getElementById('houseAge2').value,
+            email: document.getElementById('email2').value,
+            NORSM: document.getElementById('NORSM2').value,
+            NOB: document.getElementById('NOB2').value,
+            remark: document.getElementById('remark2').value,
+        };
+        submitForm(formData, '自費建置');
+    });
+
+    document.getElementById('submitBtn3').addEventListener('click', (event) => {
+        event.preventDefault();
+        const formData = {
+            name: document.getElementById('name3').value,
+            tel: document.getElementById('tel3').value,
+            company: document.getElementById('company3').value,
+            investPower: document.querySelector('input[name="investPower"]:checked')?.value,
+            email: document.getElementById('email3').value,
+            remark: document.getElementById('remark3').value,
+        };
+        submitForm(formData, '購買電廠');
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.lightText .text').forEach((element, index) => {
+        element.style.setProperty('--delay', `${index * 0.2}s`);
+    });
+
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const toggleMute = document.getElementById('toggleMute');
+
+    // 1. 檢查上一頁或之前的記錄，先還原上次儲存的進度
+    window.addEventListener('DOMContentLoaded', () => {
+        // 取得是否手動暫停的紀錄 (true / false)
+        const musicPaused = localStorage.getItem('musicPaused') === 'true';
+
+        // 取得儲存在 localStorage 的播放時間 (預設0)
+        const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+        backgroundMusic.currentTime = savedTime;
+
+        // 如果先前並沒有手動暫停，就嘗試自動播放
+        if (!musicPaused) {
+            // 注意：若瀏覽器策略阻擋，可能仍需要使用者點擊才能播放
+            backgroundMusic.play().catch(err => {
+                console.log("自動播放被瀏覽器阻擋：", err);
+            });
+        }
+
+        // 根據 paused 狀態，更新按鈕圖示
+        updateMusicIcon(!musicPaused);
+    });
+
+    // 2. 按下按鈕，切換播放或暫停
+    toggleMute.addEventListener("click", function () {
+        // 如果目前正在播放 -> 就暫停
+        if (!backgroundMusic.paused) {
+            backgroundMusic.pause();
+            localStorage.setItem('musicPaused', 'true'); // 記錄「已手動暫停」
+            updateMusicIcon(false);
+        } else {
+            // 若目前是暫停 -> 播放
+            backgroundMusic.play().catch(err => {
+                console.log("播放時發生錯誤：", err);
+            });
+            localStorage.setItem('musicPaused', 'false'); // 記錄「手動播放」
+            updateMusicIcon(true);
+        }
+    });
+
+    // 3. 播放時間改變時，就把最新進度存起來
+    backgroundMusic.addEventListener('timeupdate', function () {
+        localStorage.setItem('musicTime', backgroundMusic.currentTime);
+    });
+
+    // 4. 提供一個更新icon的小函式
+    function updateMusicIcon(isPlaying) {
+        // isPlaying = true -> 音樂Open圖示
+        if (isPlaying) {
+            toggleMute.src = 'imgs/musicOpen.png';
+            toggleMute.alt = '音樂開啟';
+        } else {
+            // isPlaying = false -> 音樂Close圖示
+            toggleMute.src = 'imgs/musicClose.png';
+            toggleMute.alt = '音樂關閉';
+        }
+    }
+
+
+</script>
+
+
+<script>
+    const myHamburgerBtn = document.getElementById("myHamburgerBtn");
+    const myMenuBox = document.getElementById("myMenuBox");
+
+    myHamburgerBtn.addEventListener("click", () => {
+        // 切換自己 (三條線→X)
+        myHamburgerBtn.classList.toggle("active");
+        // 切換選單 (.myMenuBox 滑進/滑出)
+        myMenuBox.classList.toggle("active");
+    });
+</script>
+
+<style lang="scss">
+    .indexSwiper {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        opacity: .9;
+
+    }
+
+    .indexSwiper .textGroup {
+        width: 100%;
+        position: absolute;
+        z-index: 9;
+        bottom: 60px;
+        bottom: 13%;
+        /* transform: translateY(-50%); */
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+
+    .indexSwiper .buttonGroup {
+        width: 100%;
+    }
+
+    .indexSwiper button {
+        font-size: 3rem;
+        color: #fff;
+        background-color: transparent;
+        border: #fff 2px solid;
+        cursor: pointer;
+        transform: rotateX(-45deg) rotateY(0deg);
+        perspective: 800px;
+        opacity: .9;
+        box-shadow: 0 0 20px rgba(255, 255, 255, .1);
+        padding: 0.25rem 1rem;
+        border-radius: 16px;
+        transition: .35s ease all;
+
+    }
+
+    .indexSwiper button:hover {
+        background-color: #f17217;
+        box-shadow: 0 0 30px rgba(255, 255, 255, .5);
+
+    }
+
+    .indexSwiper h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 99px;
+        line-height: .5;
+        font-weight: 1000;
+        letter-spacing: .5rem;
+        color: transparent;
+        /* 設置字體顏色為透明 */
+        background-size: 300%;
+        /* 背景尺寸大於字體，以便創造波浪效果 */
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        opacity: .9;
+        transform: rotateX(-65deg) rotateY(0deg);
+        perspective: 800px;
+        animation: waveGradient 5s ease-in-out infinite;
+        width: 100%;
+        /* 波浪漸層效果 */
+    }
+
+    /* 定義波浪動畫 */
+    @keyframes waveGradient {
+        0% {
+            background-position: 0% 50%;
+            /* 漸層從左邊開始 */
+        }
+
+        50% {
+            background-position: 100% 60%;
+            /* 漸層在右邊並向上移動一點 */
+        }
+
+        100% {
+            background-position: 0% 50%;
+            /* 漸層返回到初始位置 */
+        }
+    }
+
+
+    .indexSwiper h3 {
+
+        opacity: 1;
+        z-index: 999;
+        width: 100%;
+        font-size: 64px;
+        color: #fff;
+        font-weight: 1000;
+        /* transform: rotateX(-65deg) rotateY(0deg); */
+
+        letter-spacing: .5rem;
+        display: inline-block;
+
+
+        /* perspective: 800px; */
+    }
+
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        filter: brightness(.85) blur(.3px);
+        object-fit: cover;
+        transition: opacity 6s ease-in-out, transform 12s ease-in-out;
+
+        /* 使圖片淡入淡出過渡時間變為 6 秒 */
+    }
+
+    /* Keyframe animation for zoom-in effect */
+    /* Zoom-in 動畫 */
+    @keyframes zoomIn {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.15);
+        }
+    }
+
+    /* 為圖片添加 Zoom-In 動畫 */
+    .zoom-active {
+        animation: zoomIn 15s forwards ease-out;
+        animation-delay: .5s;
+        /* 確保動畫生效 */
+
+        /* 可選效果 */
+    }
+
+
+
+    /* 確保滑動過渡時圖片疊加而非淡出 */
+    .swiper-slide {
+        opacity: 0;
+    }
+
+    .swiper-slide-active {
+        opacity: 1;
+    }
+
+    .swiper-pagination {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+
+
+
+        gap: 4px;
+    }
+
+    .swiper-pagination-bullet {
+        background-color: #fff;
+        width: 48px;
+        height: 8px;
+        border-radius: 0;
+
+
+    }
+
+    .slideSubText {
+        position: absolute;
+        bottom: 7%;
+        left: 50%;
+        font-size: 3rem;
+        transform: translateX(-50%);
+        color: #ffffff;
+        letter-spacing: 12px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, .4);
+
+    }
+
+
+    @media screen and (max-width: 1200px) {
+
+        .indexSwiper .textGroup {
+            width: 100%;
+            position: absolute;
+            z-index: 9;
+            bottom: 54px;
+            /* transform: translateY(-50%); */
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .indexSwiper h3 {
+            font-size: 2.5rem;
+        }
+
+    }
+
+    @media screen and (max-width: 992px) {
+
+        .indexSwiper .textGroup {
+            width: 100%;
+            position: absolute;
+            z-index: 9;
+            bottom: 80px;
+            /* transform: translateY(-50%); */
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+
+
+        }
+
+        .slideSubText {
+
+            bottom: 47.5px;
+            left: 50%;
+            font-size: 2rem;
+            letter-spacing: 12px;
+        }
+
+        .textGroup .consultBtn {
+            font-size: 2rem;
+
+
+        }
+
+        .indexSwiper h3 {
+            font-size: 1.75rem;
+        }
+
+    }
+
+    @media screen and (max-width: 576px) {
+        .indexSwiper {
+            height: 88vh;
+        }
+
+        .indexSwiper .textGroup {
+
+            position: absolute;
+            z-index: 9;
+            bottom: 50px;
+
+
+            /* transform: translateY(-50%); */
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .indexSwiper .textGroup {
+            width: 100%;
+            z-index: 9;
+            bottom: 80px;
+            /* transform: translateY(-50%); */
+            font-size: 1.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+
+
+        }
+
+
+        .slideSubText {
+
+            bottom: 47.5px;
+            left: 50%;
+            font-size: 1.75rem;
+            letter-spacing: 12px;
+            white-space: nowrap;
+        }
+
+        .indexSwiper h3 {
+            font-size: 1rem;
+            display: none;
+        }
+    }
+
+
+
+    .lightText {
+        display: flex;
+        gap: 8px;
+        /* 字母間距 */
+        position: absolute;
+        bottom: 1%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        user-select: none;
+        transition: .5s ease all;
+    }
+
+    .text {
+        font-size: 5rem;
+        font-weight: bold;
+        letter-spacing: 10px;
+        font-family: monospace;
+        color: transparent;
+        /* 初始字體透明 */
+        background: linear-gradient(60deg, rgba(255, 255, 255, 0.87) 0%, rgba(255, 255, 255, 0.862) 50%, rgb(255, 141, 20) 100%);
+        background-size: 200%;
+        /* 拉長背景 */
+        -webkit-background-clip: text;
+        opacity: 1;
+        background-clip: text;
+        /* animation: lightEffect 0.5s ease-out; */
+
+        text-shadow: 0 0 10px rgba(255, 255, 255, .5);
+        animation-fill-mode: both;
+
+        /* 確保動畫結束後保留效果 */
+        /* animation-delay: var(--delay, 0s); */
+        /* 使用 JS 動態添加延遲 */
+    }
+
+
+
+
+    .indexSwiper .lightText {
+        z-index: 9;
+
+    }
+
+    .swiper-pagination-bullet {
+        width: 1.75rem;
+        height: 8px;
+    }
+</style>
+
+
+
+
+
+<script>
+
+
+
+    window.onload = function () {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+
+        // Fetch all the images in the page
+        const images = document.getElementsByTagName('img');
+        let loadedImagesCount = 0;
+        const totalImages = images.length;
+
+        const updateProgress = () => {
+            const progress = Math.round((loadedImagesCount / totalImages) * 100);
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${progress}%`;
+        };
+
+        // Function to handle image loading completion
+        const checkImagesLoaded = () => {
+            loadedImagesCount++;
+            updateProgress();
+            if (loadedImagesCount === totalImages) {
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                }, 500); // Fade out loading screen after a short delay
+            }
+        };
+
+        // If there are no images, immediately hide the loading screen
+        if (totalImages === 0) {
+            checkImagesLoaded();
+        }
+
+        // Attach load event to each image
+        for (let i = 0; i < totalImages; i++) {
+            if (images[i].complete) {
+                checkImagesLoaded();
+            } else {
+                images[i].onload = checkImagesLoaded;
+                images[i].onerror = checkImagesLoaded; // In case an image fails to load, still count it
+            }
+        }
+    };
+
+
+
+
+
+</script>
